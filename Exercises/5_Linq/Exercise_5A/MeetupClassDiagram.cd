@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Exercise_5A.Meetup.Group">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="Null" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAgAIAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Events" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Exercise_5A.Meetup.Event">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="Null" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAEAAAAAABAAAAAEAAAABAAKAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Agenda" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Exercise_5A.Meetup.Agenda">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="Null" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAIAAgAAAAAAIAAAAAAAQ=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Speakers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Exercise_5A.Meetup.Speaker">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="Null" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAQAAAAAAAAACAIAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Links" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Exercise_5A.Meetup.Link">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="Null" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAACAIAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

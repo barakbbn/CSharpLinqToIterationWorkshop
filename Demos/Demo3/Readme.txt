@@ -1,0 +1,1 @@
+﻿This project demonstrate usage of yield keyword (implementation of Iterator Blocks)

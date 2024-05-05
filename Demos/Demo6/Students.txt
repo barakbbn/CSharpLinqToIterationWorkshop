@@ -1,0 +1,10 @@
+﻿Anat Dor, anat.dor@gmail.com, Haifa, Israel, 10
+Yael Sela, yael.sela@gmail.com, Haifa, Israel, 20
+Yaron Cohen, yaron.cohen@gmail.com, Hadera, Israel, 30
+Gil Shafir, gil.shafir@gmail.com, Ako, Israel, 40
+Orit Fox, orit.fox@gmail.com, Nahariya, Israel, 50
+Benny Avni, beny.avni@gmail.com, Haifa, Israel, 60
+Dov Levi, dov.levi@gmail.com, Nesher, Israel, 70
+Amos Zuker, amos.zuker@gmail.com, Hadera, Israel, 80
+Ehud Golan, ehud.golan@gmail.com, Hadera, Israel, 90
+Eran Navon, eran.navon@gmail.com, Haifa, Israel, 100

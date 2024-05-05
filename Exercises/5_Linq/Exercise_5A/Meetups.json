@@ -1,0 +1,1600 @@
+{
+	"groups": [
+		{
+			"name": "ALT.NET Israel",
+			"organizer": "Shay Friedman",
+			"events": [
+				{
+					"title": "ALT.NET Night - March 2023",
+					"when": "2023-05-01T18:00:00+02:00",
+					"where": "Nayax Offices",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Demystifying C#'s Interpolated string handler",
+							"startTime": "18:30",
+							"endTime": "19:00",
+							"speakers": [
+								{
+									"name": "Moaid Hathot",
+									"title": "Senior Software Engineer at Microsoft",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://il.linkedin.com/in/moaid-hathot"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Ideas for team leaders in tech",
+							"startTime": "19:00",
+							"endTime": "19:30",
+							"speakers": [
+								{
+									"name": "Shay Friedman",
+									"title": "Head Of Engineering at Canopy",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://il.linkedin.com/in/shayfriedman"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/shayfriedman"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Food and drinks",
+							"startTime": "19:30",
+							"endTime": "20:00",
+							"speakers": []
+						},
+						{
+							"title": "The good and bad of smart contracts and web3 dev experience",
+							"startTime": "20:00",
+							"endTime": "20:30",
+							"speakers": [
+								{
+									"name": "Roy Osherove",
+									"title": "Consultant & Founder of Legato Labs",
+									"links": [
+										{
+											"title": "ROY OSHEROVE",
+											"url": "https://osherove.com/"
+										},
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/osherove"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/royosherove"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":54
+				},
+				{
+					"title": "ALT.NET Night - December 2022",
+					"when": "2022-12-27T18:00:00+02:00",
+					"where": "Lumen HQ - Hacking Metabolism",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Flutter: Zero to Hero in 30min",
+							"startTime": "18:30",
+							"endTime": "19:00",
+							"speakers": [
+								{
+									"name": "Ariel Ben Horesh",
+									"title": "Architect and Consultant",
+									"links": [
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/ArielBH"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Me, Myself and the Imposter Syndrome",
+							"startTime": "19:00",
+							"endTime": "19:30",
+							"speakers": [
+								{
+									"name": "Yifat Rosenber",
+									"title": "Team Leader",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/yifat-rosenberg"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Food and drinks",
+							"startTime": "19:30",
+							"endTime": "20:00",
+							"speakers": []
+						},
+						{
+							"title": "8S Sidecar-based Message Queues",
+							"startTime": "20:00",
+							"endTime": "20:30",
+							"speakers": [
+								{
+									"name": "Bar Levy",
+									"title": "Full Stack Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/bar-lavy"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":0
+				},
+				{
+					"title": "ALT.NET Night - April 2018",
+					"when": "2018-04-30T18:00:00+03:00",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Intro to Machine Learning with AzureML",
+							"startTime": "18:30",
+							"endTime": "19:00",
+							"speakers": [
+								{
+									"name": "Omri Fima",
+									"title": "Chief Architec",
+									"links": [
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/omrifima"
+										},
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/omri-fima"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Choosing RabbitMQ over Other Messaging Queues",
+							"startTime": "19:00",
+							"endTime": "19:30",
+							"speakers": [
+								{
+									"name": "Alberto Bar Noy",
+									"title": "Senior Software Engineer",
+									"links": [
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/albertoBN"
+										},
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/albertobarnoy"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Food and drinks",
+							"startTime": "19:30",
+							"endTime": "20:00",
+							"speakers": []
+						},
+						{
+							"title": "Zipkin - a Distributed Trace Platform",
+							"startTime": "20:00",
+							"endTime": "20:30",
+							"speakers": [
+								{
+									"name": "Ygal Bellaiche",
+									"title": "Team Leader",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/💾-ygal-bellaiche"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":68
+				},
+				{
+					"title": "ALT.NET Night - December 2017",
+					"when": "2017-12-11T18:00:00+03:00",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Mutation testing in C# using Roslyn, a method of uncovering functional gaps in your tests",
+							"startTime": "18:30",
+							"endTime": "19:00",
+							"speakers": [
+								{
+									"name": "Nir Rozen",
+									"title": "Senior Software  Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/nir-roze"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Nine lessons learned from implementing CD in huge enterprises",
+							"startTime": "19:00",
+							"endTime": "19:30",
+							"speakers": [
+								{
+									"name": "Roy Osherove",
+									"title": "Consultant & Agile Expert",
+									"links": [
+										{
+											"title": "ROY OSHEROVE",
+											"url": "https://osherove.com/"
+										},
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/osherove"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Food and drinks",
+							"startTime": "19:30",
+							"endTime": "20:00",
+							"speakers": []
+						},
+						{
+							"title": "Continuous Delivery with Relational Database - not a myth!",
+							"startTime": "20:00",
+							"endTime": "20:30",
+							"speakers": [
+								{
+									"name": "Boris Modylevsky",
+									"title": "Software Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/borismod"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":106
+				}
+			]
+		},
+		{
+			"name": "Node.js Israel",
+			"organizer": "Lior Kesos",
+			"events": [
+				{
+					"title": "May 2023 Node.js Monthly Meetup",
+					"when": "2023-05-29T18:00:00+03:00",
+					"where": "Check Point Software Technologies",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Dear DB, we have to talk",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Lior Amouyal",
+									"title": "Senior Full Stack Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/amouyal"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Fearless Development",
+							"startTime": "19:15",
+							"endTime": "19:50",
+							"speakers": [
+								{
+									"name": "Michael Solomon",
+									"title": "Team Lead",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/michael-solomon"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":253
+				},
+				{
+					"title": "April 2023 Node.js Monthly Meetup",
+					"when": "2023-05-01T18:00:00+03:00",
+					"where": "Check Point Software Technologies",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Flow-centric monitoring",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Michael Kalenkovich",
+									"title": "Principal Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/michael-kalenkovich"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Dynamic development at a fast pace with minimal risk",
+							"startTime": "19:15",
+							"endTime": "19:50",
+							"speakers": [
+								{
+									"name": "Itay Zemah",
+									"title": "Tech Lead",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/itay-zemah"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":229
+				},
+				{
+					"title": "March 2023 Node.js Monthly Meetup",
+					"when": "2023-03-22T18:00:00+02:00",
+					"where": "Check Point Software Technologies",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Reviving a forgotten Node capability in Lambda",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Or Cohen",
+									"title": "Software Full Stack Developer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/or-cohen"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Shifting Left : Performance testing using K6 by GrafanaLabs",
+							"startTime": "19:15",
+							"endTime": "19:50",
+							"speakers": [
+								{
+									"name": "Ziv Kalderon",
+									"title": "Engineering Team Lead",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/ziv-k"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":238
+				},
+				{
+					"title": "February 2023 Node.js Monthly Meetup",
+					"when": "2023-02-20T18:00:00+02:00",
+					"where": "Check Point Software Technologies",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Making monorepos scale with Turborepo",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Or Zarchi",
+									"title": "Staff Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/or-zarchi"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Removing the Fat: Why you should bundle your node backend",
+							"startTime": "19:15",
+							"endTime": "19:50",
+							"speakers": [
+								{
+									"name": "Daniel Hallel Jakobsen",
+									"title": "Full Stack Staff Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/ziv-k"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":358
+				},
+				{
+					"title": "January 2023 Node.js Meetup is here!!",
+					"when": "2023-02-20T18:00:00+02:00",
+					"where": "Check Point Software Technologies",
+					"agenda": [
+						{
+							"title": "Gathering & mingling",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Monorepo - past, present & future",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Guy Bary",
+									"title": "Tech Lead",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/bgauryy"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Towards a simpler JavaScript ecosystem",
+							"startTime": "19:15",
+							"endTime": "19:45",
+							"speakers": [
+								{
+									"name": "Gil Tayar",
+									"title": "Senior Software Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/giltayar"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/giltayar"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/giltayar"
+										},
+										{
+											"title": "To Love and to Learn (Gil Tayar's Blog)",
+											"url": "https://gils-blog.tayar.org/"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":334
+				}
+			]
+		},
+		{
+			"name": "JavaScript Israel",
+			"organizer": "Shai Reznik",
+			"events": [
+				{
+					"title": "Let's Go Headless - A Dive into Headless Components",
+					"when": "2023-08-20T18:30:00+03:00",
+					"where": "Check Point Software Technologies",
+					"agenda": [
+						{
+							"title": "Drink, eat and mingle",
+							"startTime": "18:30",
+							"endTime": "19:00",
+							"speakers": []
+						},
+						{
+							"title": "Build your design system with tailwind + CVA + radix",
+							"startTime": "19:00",
+							"endTime": "19:45",
+							"speakers": [
+								{
+									"name": "Alon Valadji",
+									"title": "Senior web technologies consultant and Software Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/alonronin"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/alonronin"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "shadcn/ui: Build Beautiful and Accessible User Interfaces with Ease",
+							"startTime": "19:50",
+							"endTime": "20:20",
+							"speakers": [
+								{
+									"name": "Nir Tamir",
+									"title": "Full Stack Developer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/nirtamir"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":178
+				},
+				{
+					"title": "Modern Command Line Applications",
+					"when": "2023-07-10T18:30:00+03:00",
+					"where": "Melio",
+					"agenda": [
+						{
+							"title": "Drink, eat and mingle",
+							"startTime": "18:30",
+							"endTime": "19:00",
+							"speakers": []
+						},
+						{
+							"title": "Yaaaaargs! CLI Like a Pirate",
+							"startTime": "19:00",
+							"endTime": "19:45",
+							"speakers": [
+								{
+									"name": "Gil Tayar",
+									"title": "Senior Software Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/giltayar"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/giltayar"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/giltayar"
+										},
+										{
+											"title": "To Love and to Learn (Gil Tayar's Blog)",
+											"url": "https://gils-blog.tayar.org/"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Developing Command-line Applications with React",
+							"startTime": "19:50",
+							"endTime": "20:10",
+							"speakers": [
+								{
+									"name": "Adir Amsalem",
+									"title": "Developer Tools",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/adiramsalem"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Nrwl Nx: A Very Expected Journey",
+							"startTime": "20:15",
+							"endTime": "20:45",
+							"speakers": [
+								{
+									"name": "Yonatan Kra",
+									"title": "Software Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/jonathan-kra"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/YonatanKra"
+										},
+										{
+											"title": "Yonatan Kra - Family, Code, Run",
+											"url": "https://yonatankra.com/"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":204
+				},
+				{
+					"title": "Solid & Qwik JavaScript Apps",
+					"when": "2023-05-03T18:00:00+03:00",
+					"where": "Melio",
+					"agenda": [
+						{
+							"title": "Drink, eat and mingle",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "SolidJS - The Hard Parts, Simplified",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Dan Jutan",
+									"title": "Product Manager",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/dan-jutan"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/jutanium"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "A Qwik Glimpse Into the Future",
+							"startTime": "19:20",
+							"endTime": "19:50",
+							"speakers": [
+								{
+									"name": "Shai Reznik",
+									"title": "Founder & CEO",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/shaireznik"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/shai_reznik"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/shairez"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Typesafe Data Flows in SolidStart",
+							"startTime": "19:55",
+							"endTime": "20:15",
+							"speakers": [
+								{
+									"name": "Ron Mizrahi",
+									"title": "Senior Frontend Developer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/ron-mizrahi"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":114
+				},
+				{
+					"title": "JavaScript Performance and Optimization",
+					"when": "2023-03-29T18:00:00+03:00",
+					"where": "Melio",
+					"agenda": [
+						{
+							"title": "Drink, eat and mingle",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "A Tale of How We Enabled Our Imperative API To Be Used In a Declarative Way",
+							"startTime": "18:30",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Yury Michurin",
+									"title": "Senior Software Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/yurymichurin"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Basic Review On Turborepo",
+							"startTime": "19:20",
+							"endTime": "19:30",
+							"speakers": [
+								{
+									"name": "Dani Sofer",
+									"title": "Frontend Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/dani-sofer"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Improving Web App Responsiveness with Production Data and Browser APIs",
+							"startTime": "19:30",
+							"endTime": "20:00",
+							"speakers": [
+								{
+									"name": "Noam Helfman",
+									"title": "Software Engineer",
+									"links": [
+										{
+											"title": "GitHub",
+											"url": "https://github.com/nhelfman"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/helfmannoam"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":270
+				},
+				{
+					"title": "Insights from the State of JS 2022",
+					"when": "2023-03-29T18:00:00+03:00",
+					"where": "Melio",
+					"agenda": [
+						{
+							"title": "Drink, eat and mingle",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Hook Into Objects Properties Like a Pro",
+							"startTime": "18:30",
+							"endTime": "19:05",
+							"speakers": [
+								{
+									"name": "Guy Bary",
+									"title": "Technical Manager",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/bgauryy"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "From ES6 to ES13 - the main features",
+							"startTime": "19:10",
+							"endTime": "19:35",
+							"speakers": [
+								{
+									"name": "Gal Oz",
+									"title": "Full Stack Developer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/gal-oz"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "String.prototype.replaceAll / Stop.thinking.atAll",
+							"startTime": "19:40",
+							"endTime": "19:45",
+							"speakers": [
+								{
+									"name": "Lior Hoshea",
+									"title": "Fullstack developer",
+									"links": [
+										{
+											"title": "GitHub",
+											"url": "https://github.com/liorho"
+										},
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/liorho"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "New 2022 JS Features I Love",
+							"startTime": "19:45",
+							"endTime": "20:10",
+							"speakers": [
+								{
+									"name": "Gil Tayar",
+									"title": "Software Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/giltayar"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/giltayar"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/giltayar"
+										},
+										{
+											"title": "To Love and to Learn (Gil Tayar's Blog)",
+											"url": "https://gils-blog.tayar.org/"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":249
+				},
+				{
+					"title": "Cascading into the StyleSheets world",
+					"when": "2023-01-10T18:00:00+02:00",
+					"where": "Melio",
+					"agenda": [
+						{
+							"title": "Drink, eat and mingle",
+							"startTime": "18:00",
+							"endTime": "18:30",
+							"speakers": []
+						},
+						{
+							"title": "Creating and Maintaining a Design system Component Library in a Fast-Growing Company",
+							"startTime": "18:30",
+							"endTime": "19:10",
+							"speakers": [
+								{
+									"name": "Hadas Farhi",
+									"title": "Frontend Developer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/hadasfarhi"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/hadasfa"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Individual Transforms: the Good, the Bad, and the Syntax",
+							"startTime": "19:15",
+							"endTime": "19:45",
+							"speakers": [
+								{
+									"name": "Amit Sheen",
+									"title": "Experienced web developer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/amit-sheen"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/amit_sheen"
+										},
+										{
+											"title": "Amit Sheen",
+											"url": "https://amitsh.com/"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Using Qwik with Tailwind and daisyUI",
+							"startTime": "19:50",
+							"endTime": "20:20",
+							"speakers": [
+								{
+									"name": "Avishay Maor",
+									"title": "Fullstack Architect & Group Lead",
+									"links": [
+										{
+											"title": "GitHub",
+											"url": "https://github.com/mavishay"
+										},
+										{
+											"title": "Sessionize",
+											"url": "https://sessionize.com/avishay-maor/"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":290
+				}
+			]
+		},
+		{
+			"name": "life michael",
+			"organizer": "Haim Michael",
+			"events": [
+				{
+					"title": "Anti Patterns [Free Meetup]",
+					"when": "2023-08-01T13:00:00+03:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Talk",
+							"startTime": "13:00",
+							"endTime": "14:00",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":50
+				},
+				{
+					"title": "Virtual Threads in Java [Free Meetup]",
+					"when": "2023-07-11T13:00:00+03:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Talk",
+							"startTime": "13:00",
+							"endTime": "14:00",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":67
+				},
+				{
+					"title": "MongoDB Design Patterns [Free Meetup]",
+					"when": "2023-07-11T13:00:00+03:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Gathering",
+							"startTime": "13:00",
+							"endTime": "13:15",
+							"speakers": []
+						},
+						{
+							"title": "Talk",
+							"startTime": "13:15",
+							"endTime": "13:45",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Q&A",
+							"startTime": "13:45",
+							"endTime": "14:00",
+							"speakers": []
+						}
+					],
+					"attendees":73
+				},
+				{
+					"title": "SQL Injections [Free Meetup]",
+					"when": "2023-05-02T13:00:00+03:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Gathering",
+							"startTime": "13:00",
+							"endTime": "13:15",
+							"speakers": []
+						},
+						{
+							"title": "Talk",
+							"startTime": "13:15",
+							"endTime": "13:45",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Q&A",
+							"startTime": "13:45",
+							"endTime": "14:00",
+							"speakers": []
+						}
+					],
+					"attendees":72
+				},
+				{
+					"title": "Record Classes in Java [Free Meetup]",
+					"when": "2023-03-07T18:30:00+02:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Talk",
+							"startTime": "18:30",
+							"endTime": "19:30",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":44
+				},
+				{
+					"title": "The Fetch API [Free Meetup]",
+					"when": "2023-02-21T18:30:00+02:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Online Gathering",
+							"startTime": "18:30",
+							"endTime": "18:45",
+							"speakers": []
+						},
+						{
+							"title": "Lecture",
+							"startTime": "18:450",
+							"endTime": "19:15",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Q&A",
+							"startTime": "19:15",
+							"endTime": "19:30",
+							"speakers": []
+						}
+					],
+					"attendees":62
+				},
+				{
+					"title": "Microservices Design Patterns [Seminar]",
+					"when": "2023-01-03T18:30:00+02:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Online Gathering",
+							"startTime": "18:30",
+							"endTime": "18:45",
+							"speakers": []
+						},
+						{
+							"title": "Lecture",
+							"startTime": "18:450",
+							"endTime": "19:45",
+							"speakers": [
+								{
+									"name": "Haim Michael",
+									"title": "Software development, Training & Consulting",
+									"links": [
+										{
+											"title": "life michael",
+											"url": "https://lifemichael.com/"
+										},
+										{
+											"title": "life michael blog",
+											"url": "https://lifemichael.com/en/"
+										},
+										{
+											"title": "YouTube",
+											"url": "https://www.youtube.com/lifemichael"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/lifemichael"
+										}
+									]
+								},
+								{
+									"name": "Ziv Ben Eliahu",
+									"title": "Senior System Architect",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/zivbe"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Q&A",
+							"startTime": "19:45",
+							"endTime": "20:00",
+							"speakers": []
+						}
+					],
+					"attendees":178
+				}
+			]
+		},
+		{
+			"name": "Codecraft IL",
+			"organizer": "Tal Doron",
+			"events": [
+				{
+					"title": "Clean Code Principles#2",
+					"when": "2022-05-29T11:00:00+03:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Talk",
+							"startTime": "11:00",
+							"endTime": "12:00",
+							"speakers": [
+								{
+									"name": "Itzik Saban",
+									"title": "Principal Software Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/itzik-saban"
+										}
+									]
+								},
+								{
+									"name": "Tal Doron",
+									"title": "Software Team Leader",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/tal-doron"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":102
+				},
+				{
+					"title": "Clean Code Principles#1",
+					"when": "2022-03-13T11:00:00+02:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Talk",
+							"startTime": "11:00",
+							"endTime": "12:00",
+							"speakers": [
+								{
+									"name": "Itzik Saban",
+									"title": "Principal Software Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/itzik-saban"
+										}
+									]
+								},
+								{
+									"name": "Tal Doron",
+									"title": "Software Team Leader",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/tal-doron"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":107
+				},
+				{
+					"title": "Discussing Software Craftsmanship",
+					"when": "2022-01-19T11:00:00+02:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Talk",
+							"startTime": "11:00",
+							"endTime": "12:00",
+							"speakers": [
+								{
+									"name": "Itzik Saban",
+									"title": "Principal Software Engineer",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/itzik-saban"
+										}
+									]
+								},
+								{
+									"name": "Tal Doron",
+									"title": "Software Team Leader",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/tal-doron"
+										}
+									]
+								}
+							]
+						}
+					],
+					"attendees":75
+				},
+				{
+					"title": "Your Software As A Garden: Building Systems That Don't Rot",
+					"when": "2021-04-22T16:45:00+03:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Online gathering and networking",
+							"startTime": "16:45",
+							"endTime": "17:00",
+							"speakers": []
+						},
+						{
+							"title": "Your Software As A Garden: Building Systems That Don't Rot",
+							"startTime": "17:00",
+							"endTime": "18:00",
+							"speakers": [
+								{
+									"name": "Shai Yallin",
+									"title": "Software gardener",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/electricmonk"
+										},
+										{
+											"title": "Facebook",
+											"url": "https://www.facebook.com/shai.yallin"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/shaiyallin"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/electricmonk"
+										},
+										{
+											"title": "Software Engineering | Shai Yallin",
+											"url": "https://www.shaiyallin.com/"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Questions",
+							"startTime": "18:00",
+							"endTime": "18:15",
+							"speakers": []
+						}
+					],
+					"attendees":176
+				},
+				{
+					"title": "Best of Women on Stage",
+					"when": "2021-03-08T16:45:00+02:00",
+					"where": "Online event",
+					"agenda": [
+						{
+							"title": "Gathering, virtual networking",
+							"startTime": "16:45",
+							"endTime": "17:00",
+							"speakers": []
+						},
+						{
+							"title": "Think as a Platform",
+							"startTime": "17:00",
+							"endTime": "17:30",
+							"speakers": [
+								{
+									"name": "Tal Bebchuk",
+									"title": "Software Engineer ",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/tal-bebchuk"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/BebchukTal"
+										},
+										{
+											"title": "GitHub",
+											"url": "https://github.com/talBebchuk"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Cracking the Code Review",
+							"startTime": "17:30",
+							"endTime": "18:00",
+							"speakers": [
+								{
+									"name": "Stella Anavi",
+									"title": "Software Team Leader",
+									"links": [
+										{
+											"title": "Linkedin",
+											"url": "https://linkedin.com/stella-ariel-anavi"
+										},
+										{
+											"title": "Twitter",
+											"url": "https://twitter.com/arielanavi"
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Q&A",
+							"startTime": "18:00",
+							"endTime": "18:15",
+							"speakers": []
+						}
+					],
+					"attendees":113
+				}
+			]
+		},
+		{
+			"name": "My New Meetup Group IL",
+			"organizer": "Me",
+			"events": []
+		}
+	]
+}

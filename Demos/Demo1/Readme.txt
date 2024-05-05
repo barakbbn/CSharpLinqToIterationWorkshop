@@ -1,0 +1,1 @@
+﻿This project demonstrate how foreach loop works with regards to IEnumerable & IEnumerator
