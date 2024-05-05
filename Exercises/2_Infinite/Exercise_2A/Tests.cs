@@ -8,8 +8,49 @@ using TestsUtils;
 namespace Exercise_2A
 {
     [TestFixture, Timeout(5000)]
-    public class EndlessCycleTests : CommonDeferredOnInputEnumerableTests<int>
+    public class EndlessCycleTests
     {
+        public void Enumerate_InputEnumeratorDisposed()
+        {
+            var source = CreateSimpleInputSequence();
+            var input = TestableEnumerable.From(source);
+            var sut = CreateEndlessCycle(input);
+            TestHelper.Enumerate(sut);
+            Warn.Unless(
+                input.DisposedCount > 0,
+                "Expected 'input' internal IEnumerator to be disposed"
+            );
+        }
+
+        [Test]
+        public void Take1_InputEnumeratorDisposed()
+        {
+            var source = CreateSimpleInputSequence();
+            var input = TestableEnumerable.From(source);
+            var sut = CreateEndlessCycle(input);
+            foreach (var item in (sut as IEnumerable))
+            {
+                break;
+            }
+            Warn.Unless(
+                input.DisposedCount > 0,
+                "Expected 'input' internal IEnumerator to be disposed"
+            );
+        }
+
+        [Test]
+        public void InputIsNull_Throw()
+        {
+            TestHelper.ShouldWarn_WhenParameterIsNull(null, () => CreateEndlessCycle<int>(null));
+        }
+
+        [Test]
+        public void GetEnumerator_InputNotIterated()
+        {
+            var source = CreateSimpleInputSequence();
+            TestHelper.GetEnumerator_InputNotIterated(source, CreateEndlessCycle);
+        }
+
         [Test]
         public void Enumerate_SourceSequenceIsCycledManyTimes()
         {
@@ -105,7 +146,9 @@ namespace Exercise_2A
             {
                 counter--;
                 if (counter == 0)
+                {
                     break;
+                }
             }
 
             input.RemoveFirst();
@@ -114,14 +157,18 @@ namespace Exercise_2A
 
             var expected = new List<int>(size);
             while (expected.Count < size)
+            {
                 expected.AddRange(input);
+            }
 
             var actual = new List<int>(size);
             foreach (var v in (sut as IEnumerable<int>))
             {
                 actual.Add(v);
                 if (actual.Count == size)
+                {
                     break;
+                }
             }
 
             Assert.That(actual, Is.EqualTo(expected));
@@ -147,12 +194,8 @@ namespace Exercise_2A
             return new EndlessCycle<T>(input);
         }
 
-        protected override object SutDeferredAction(IEnumerable<int> input)
-        {
-            return CreateEndlessCycle<int>(input);
-        }
 
-        protected override IEnumerable<int> CreateSimpleInputSequence()
+        protected IEnumerable<int> CreateSimpleInputSequence()
         {
             return new List<int> { 3, 2, 1, 0 };
         }
