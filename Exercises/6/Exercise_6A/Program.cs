@@ -82,8 +82,27 @@ namespace Exercise_6A
             this IEnumerable<ZimContainer> containers
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            var batchesOfShips = containers
+                .Where(container => container.ShipTo != ShipDestination.SECRET_LOCATION)
+                .GroupBy(c => c.ShipTo)
+                .Select(group =>
+                    group
+                        .ChunkContainers(ShipClassA.MAX_CONTAINERS)
+                        .Select(chunk =>
+                        {
+                            var ship = new ShipClassA(group.Key);
+                            ship.LoadContainers(chunk);
+                            return ship;
+                        })
+                );
+
+            foreach (var batch in batchesOfShips)
+            {
+                foreach (var ship in batch)
+                {
+                    yield return ship;
+                }
+            }
         }
 
         public static IEnumerable<IReadOnlyCollection<ZimContainer>> ChunkContainers(
@@ -91,24 +110,56 @@ namespace Exercise_6A
             int size
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            var chunk = new List<ZimContainer>(size);
+            foreach (var item in containers)
+            {
+                chunk.Add(item);
+                if (chunk.Count == size)
+                {
+                    yield return chunk;
+                    chunk = new List<ZimContainer>(size);
+                }
+            }
+            if (chunk.Count > 0)
+            {
+                yield return chunk;
+            }
         }
 
         public static IEnumerable<ShipClassA> LoadContainerOntoClassAShipsBonus(
             this IEnumerable<ZimContainer> containers
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            return containers
+                .Where(container => container.ShipTo != ShipDestination.SECRET_LOCATION)
+                .GroupBy(c => c.ShipTo)
+                .SelectMany(
+                    group => group.ChunkContainers(ShipClassA.MAX_CONTAINERS),
+                    (group, chunk) =>
+                    {
+                        var ship = new ShipClassA(chunk.First().ShipTo);
+                        ship.LoadContainers(chunk);
+                        return ship;
+                    }
+                );
         }
 
         public static IEnumerable<ShipClassB> LoadContainerOntoClassBShips(
             this IEnumerable<ZimContainer> containers
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            var batchesOfContainers = containers
+                .GroupBy(c => c.ShipTo)
+                .SelectMany(group =>
+                    group.ChunkByWeight(ShipClassB.MAX_WEIGHT, ShipClassB.MAX_CONTAINERS)
+                );
+
+            foreach (var chunk in batchesOfContainers)
+            {
+                var ship = new ShipClassB(chunk.First().ShipTo);
+                ship.LoadContainers(chunk);
+                yield return ship;
+            }
         }
 
         public static IEnumerable<IReadOnlyCollection<ZimContainer>> ChunkByWeight(
@@ -117,8 +168,42 @@ namespace Exercise_6A
             int maxContainers
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            int sum = 0;
+            var chunk = new List<ZimContainer>(maxContainers);
+
+            foreach (var container in containers)
+            {
+                var nextSum = sum + container.Weight;
+                if (nextSum > maxWeight || chunk.Count == maxContainers)
+                {
+                    bool isEmpty = chunk.Count == 0;
+                    if (isEmpty)
+                    {
+                        chunk.Add(container);
+                    }
+                    yield return chunk;
+                    chunk = new List<ZimContainer>(maxContainers);
+                    if (!isEmpty)
+                    {
+                        chunk.Add(container);
+                        sum = container.Weight;
+                    }
+                    else
+                    {
+                        sum = 0;
+                    }
+                }
+                else
+                {
+                    sum = nextSum;
+                    chunk.Add(container);
+                }
+            }
+
+            if (chunk.Count > 0)
+            {
+                yield return chunk;
+            }
         }
 
         public static IEnumerable<T> ReplaceShip<T>(
@@ -128,8 +213,19 @@ namespace Exercise_6A
         )
             where T : Ship
         {
-            // TODO:
-            throw new NotImplementedException();
+            foreach (var ship in ships)
+            {
+                if (ship.Id == shipId)
+                {
+                    newShip.Destination = ship.Destination;
+                    newShip.LoadContainers(ship.ContainersOnboard);
+                    yield return newShip;
+                }
+                else
+                {
+                    yield return ship;
+                }
+            }
         }
 
         public static ILookup<ShipDestination, Ship> JoinAndGroupShipsByDestination(
@@ -137,8 +233,7 @@ namespace Exercise_6A
             IEnumerable<Ship> moreShips
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            return ships.Concat(moreShips).ToLookup(ship => ship.Destination);
         }
 
         public static IReadOnlyDictionary<
@@ -146,14 +241,27 @@ namespace Exercise_6A
             IEnumerable<Ship>
         > OrderShipsInEachDestination(this IEnumerable<IGrouping<ShipDestination, Ship>> ships)
         {
-            // TODO:
-            throw new NotImplementedException();
+            var orderedGroupsOfShips = ships.Select(group => new
+            {
+                Destination = group.Key,
+                OrderedShips = group.OrderShipsByPriority()
+            });
+            var asDictionary = orderedGroupsOfShips.ToDictionary(
+                g => g.Destination,
+                g => (IEnumerable<Ship>)g.OrderedShips
+            );
+
+            return asDictionary;
         }
 
         public static IOrderedEnumerable<Ship> OrderShipsByPriority(this IEnumerable<Ship> ships)
         {
-            // TODO:
-            throw new NotImplementedException();
+            return ships
+                .OrderByDescending(ship =>
+                    ship.ContainersOnboard.Sum(container => container.Weight)
+                )
+                .ThenByDescending(ship => ship.ContainersOnboard.Count)
+                .ThenBy(ship => ship.Id);
         }
 
         public static IEnumerable<
@@ -162,8 +270,10 @@ namespace Exercise_6A
             this IEnumerable<KeyValuePair<ShipDestination, TDontCare>> groupsOfShips
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            return groupsOfShips.OrderBy(
+                group => group.Key.ToString(),
+                StringComparer.InvariantCultureIgnoreCase
+            );
         }
     }
 
@@ -172,8 +282,10 @@ namespace Exercise_6A
         // =========== Copy from Exercise 5B ====================
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
-            // TODO:
-            throw new NotImplementedException();
+            foreach (var item in source)
+            {
+                action(item);
+            }
         }
 
         // =========== BONUS 2 ====================
@@ -182,8 +294,20 @@ namespace Exercise_6A
             int size
         )
         {
-            // TODO:
-            throw new NotImplementedException();
+            var chunk = new List<T>(size);
+            foreach (var item in source)
+            {
+                chunk.Add(item);
+                if (chunk.Count == size)
+                {
+                    yield return chunk;
+                    chunk = new List<T>(size);
+                }
+            }
+            if (chunk.Count > 0)
+            {
+                yield return chunk;
+            }
         }
 
         // =========== BONUS 3 ====================
@@ -194,8 +318,7 @@ namespace Exercise_6A
             Func<T, int> selector
         )
         {
-            // TODO: BONUS
-            throw new NotImplementedException();
+            return ChunkByLimit(source, (decimal)limit, maxChunkSize, x => (decimal)selector(x));
         }
 
         // =========== BONUS 4 ====================
@@ -206,8 +329,7 @@ namespace Exercise_6A
             Func<T, long> selector
         )
         {
-            // TODO: BONUS
-            throw new NotImplementedException();
+            return ChunkByLimit(source, (decimal)limit, maxChunkSize, x => (decimal)selector(x));
         }
 
         public static IEnumerable<IReadOnlyCollection<T>> ChunkByLimit<T>(
@@ -217,8 +339,44 @@ namespace Exercise_6A
             Func<T, decimal> selector
         )
         {
-            // TODO: BONUS
-            throw new NotImplementedException();
+            decimal sum = 0;
+            List<T> chunk = new List<T>(maxChunkSize);
+
+            foreach (var item in source)
+            {
+                var nextValue = selector(item);
+                var nextSum = sum + nextValue;
+                if (nextSum > limit || chunk.Count == maxChunkSize)
+                {
+                    bool isEmpty = chunk.Count == 0;
+                    if (isEmpty)
+                    {
+                        chunk.Add(item);
+                    }
+                    yield return chunk;
+
+                    chunk = new List<T>(maxChunkSize);
+                    if (!isEmpty)
+                    {
+                        chunk.Add(item);
+                        sum = nextValue;
+                    }
+                    else
+                    {
+                        sum = 0;
+                    }
+                }
+                else
+                {
+                    sum = nextSum;
+                    chunk.Add(item);
+                }
+            }
+
+            if (chunk.Count > 0)
+            {
+                yield return chunk;
+            }
         }
     }
 

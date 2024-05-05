@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Exercise_4B
@@ -30,35 +32,61 @@ namespace Exercise_4B
         public string City { get; set; }
     }
 
-    // TODO: Implement IEnumerable<StudentInfo>
-    public class StudentsFileEnumerator
+    public class StudentsFileEnumerator : IEnumerable<StudentInfo>
     {
         public const string CSV_HEADER = "Name,Email,City,Country,Grade";
 
-        // TODO: Implement Constructor
+        private readonly string _studentsCsvFilePath;
+
         public StudentsFileEnumerator(string studentsCsvFilePath)
         {
-            throw new NotImplementedException();
+            _studentsCsvFilePath = studentsCsvFilePath;
         }
+
+        public IEnumerator<StudentInfo> GetEnumerator()
+        {
+            using (var reader = OpenStudentsFile(_studentsCsvFilePath))
+            {
+                foreach (var student in EnumerateStudents(reader))
+                {
+                    yield return student;
+                }
+            }
+        }
+
+        private IEnumerable<StudentInfo> EnumerateStudents(StreamReader reader)
+        {
+            var header = reader.ReadLine();
+            for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
+            {
+                if (string.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+                yield return ParseStudent(line);
+            }
+        }
+
+        private StudentInfo ParseStudent(string line)
+        {
+            var fields = line.Split(',');
+            return new StudentInfo
+            {
+                Name = fields[0].Trim(),
+                Email = fields[1].Trim(),
+                Address = { City = fields[2].Trim(), Country = fields[3].Trim() },
+                Grade = int.Parse(fields[4].Trim())
+            };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         // ===============================================
         // !!!!! USE THIS METHOD TO OPEN THE STUDENTS FILE !!!!!!
         // unit-tests depends on it to verify correct implementation
         protected virtual StreamReader OpenStudentsFile(string filePath)
         {
-            // TODO: Open students file and return StreamReader;
-            throw new NotImplementedException();
-            // HINT: To open the CSV file as Stream, search the Internet (or scroll down-down in README.md)
+            return File.OpenText(filePath);
         }
-        // ===============================================
-
-
-        // HINTS. you might want to breakdown the logic to small methods
-        // private StudentInfo ParseStudent(string csvLine) {
-        //     var csvFields = csvLine.Split(","); // csvFields[0] -> Name , csvFields[1] -> Email , csvFields[2] -> City , csvFields[3] -> Country , csvFields[4] -> Grade
-        //     // TODO: do the rest
-        //}
-        // HINT: Remember the first line in the CSV file is header.
-        // HINT: It could be that some lines in the CSV file are empty!
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Exercise_5B;
 
 namespace Exercise_5C
 {
@@ -72,8 +73,7 @@ namespace Exercise_5C
             CheckInCounter checkInCounter
         )
         {
-            // TODO:Implement using CheckInCounter.CheckIn() method
-            throw new NotImplementedException();
+            return passengers.Select(checkInCounter.CheckIn);
         }
 
         public static IEnumerable<Baggage> CombineAllBaggage(
@@ -90,8 +90,10 @@ namespace Exercise_5C
             IEnumerable<IList<Baggage>> generalBaggage
         )
         {
-            // TODO: Implement using Concat() and Flatten() extension methods
-            throw new NotImplementedException();
+            return vipBaggage
+                .Where(bags => bags.Count > 0)
+                .Concat(generalBaggage.Where(bags => bags.Count > 0))
+                .Flatten();
         }
 
         // Bonus
@@ -100,31 +102,29 @@ namespace Exercise_5C
             IEnumerable<IList<Baggage>> generalBaggage
         )
         {
-            // TODO: Implement using Interleave() and Flatten() extension methods
-            throw new NotImplementedException();
+            return vipBaggage
+                .Where(bags => bags.Count > 0)
+                .Interleave(generalBaggage.Where(bags => bags.Count > 0))
+                .Flatten();
         }
 
         public static bool ShouldLoadBaggageUsingTractor(IEnumerable<Baggage> baggage, int minMount)
         {
-            // TODO: Implement using HasAtLeast(minMount) extension method
-            throw new NotImplementedException();
+            return baggage.HasAtLeast(minMount);
         }
 
+        // BONUS
         public static IEnumerable<Baggage> RemovePassengersBaggage(
             IEnumerable<Baggage> baggage,
             IEnumerable<int> passengersIds
         )
         {
-            // BONUS - if you want to skip this part, simply return `baggage` parameter as is
-            // TODO: Implement using RemoveByKeys() extension method
-            throw new NotImplementedException();
+            return baggage.RemoveByKeys(passengersIds, bag => bag.PassengerID);
         }
 
         public static void PrintBaggage(IEnumerable<Baggage> baggage)
         {
-            // TODO: Implement using ForEach() extension method and write each to  the Console
-            // PS. Baggage implements ToString()
-            throw new NotImplementedException();
+            baggage.ForEach(bag => Console.WriteLine(bag));
         }
 
         public static IEnumerable<Passenger> GeneratePassengers(int initialId)

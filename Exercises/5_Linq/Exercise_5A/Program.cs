@@ -29,19 +29,73 @@ namespace Exercise_5A
     {
         public static Challenge1Results Challenge1(Meetup.DB meetups)
         {
-            throw new NotImplementedException();
+            return new Challenge1Results
+            {
+                GroupNamesUpperCase = meetups.Groups.Select(g => g.Name.ToUpper()),
+                IsraeliGroups = meetups
+                    .Groups.Where(g => g.Name.Contains("Israel"))
+                    .Select(g => g.Name),
+                IsraeliGroupsCount = meetups.Groups.Count(g => g.Name.Contains("Israel")),
+                TotalEvents = meetups.Groups.Sum(g => g.Events.Length),
+                First3Organizers = meetups
+                    .Groups.OrderBy(g => g.Organizer)
+                    .Take(3)
+                    .Select(g => (g.Organizer, g.Name))
+                    .ToList()
+            };
         }
 
         public static IEnumerable<MeetupStats> GetMeetupsStatistics(Meetup.DB meetups)
         {
-            throw new NotImplementedException();
+            var meetupsStats = meetups
+                .Groups.Where(group => group.Events.Length > 0)
+                .OrderBy(group => group.Name)
+                .Select(group =>
+                {
+                    var latestEvent = group.Events.Aggregate(
+                        Meetup.Event.Null,
+                        (prev, next) => next.When > prev.When ? next : prev
+                    );
+                    return new MeetupStats
+                    {
+                        Name = group.Name,
+                        EventsCount = group.Events.Count(),
+                        AverageAttendees = group.Events.Average(@event => @event.Attendees),
+                        LatestEventTitle = latestEvent.Title,
+                        LatestEventDate = latestEvent.When,
+                        EverHadAtLeast200Attendees = group.Events.Any(@event =>
+                            @event.Attendees >= 200
+                        ),
+                    };
+                });
+
+            return meetupsStats;
         }
 
         public static List<(string Name, string Title, string Url)> QueryArchitectsRepos(
             Meetup.DB meetups
         )
         {
-            throw new NotImplementedException();
+            var architectsRepos = meetups
+                .Groups.SelectMany(g => g.Events)
+                .SelectMany(ev => ev.Agenda)
+                .SelectMany(agenda => agenda.Speakers)
+                .SelectMany(
+                    speaker => speaker.Links,
+                    (Meetup.Speaker speaker, Meetup.Link link) => (speaker, link)
+                )
+                .Where(speakerLink =>
+                    speakerLink.speaker.Title.Contains("Architect")
+                    && speakerLink.link.Title == "GitHub"
+                )
+                .GroupBy(speakerLink => speakerLink.speaker.Name, (name, items) => items.First())
+                .OrderBy(speakerLink => speakerLink.speaker.Name)
+                .Select(speakerLink =>
+                    (speakerLink.speaker.Name, speakerLink.speaker.Title, speakerLink.link.Url)
+                )
+                .ToList();
+
+            return architectsRepos;
         }
 
         static void Main(string[] args)
