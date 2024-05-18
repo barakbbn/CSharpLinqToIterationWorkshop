@@ -5,7 +5,22 @@
 ___
 In this exercise we'll practice the use of `yield` keyword.  
 
-### Exercise 1 - FizzBuzzSequence refactored &#x1F4DA;
+### Exercise 1 - Remove Nulls from input sequence &#x1F4DA;
+
+The class implementation should take an input sequence and yield return only non-null values from it
+- Implement class RemoveNulls. 
+  - It should implements interface IEnumerable&lt;T&gt;
+  - GetEnumerator<T> method should use yield keyword
+
+```csharp
+public class RemoveNulls<T> : IEnumerable<T>
+{
+    // TODO: Implement
+    public RemoveNulls(IEnumerable<T> source) {}
+}
+```
+
+### Exercise 2 - FizzBuzzSequence refactored &#x1F4DA;
 
 Implement FizzBuzzSequence from exercise 1B using a method instead of a class
 
@@ -23,7 +38,7 @@ class Exercises
 ```
 
 
-### Exercise 2 - Fibonacci sequence &#x1F4DA;
+### Exercise 3 - Fibonacci sequence &#x1F4DA;
 The [Fibonacci Sequence](https://www.mathsisfun.com/numbers/fibonacci-sequence.html) is the series of numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...  
 The next number is found by adding up the two numbers before it:
 
@@ -45,20 +60,6 @@ class Exercises
 ```
 
 
-### Exercise 3 - Remove Nulls from input sequence &#x1F4DA;
-
-The class implementation should take an input sequence and yield return only non-null values from it
-- Implement class RemoveNulls. 
-  - It should implements interface IEnumerable&lt;T&gt;
-  - GetEnumerator<T> method should use yield keyword
-
-```csharp
-public class RemoveNulls<T> : IEnumerable<T>
-{
-    // TODO: Implement
-    public RemoveNulls(IEnumerable<T> source) {}
-}
-```
 
 **Example**  
 
@@ -76,7 +77,7 @@ Complete implementation of `BinaryTreeNode` class
   - First it should yield return all the left side, 
   - Then the `Value` property of the current node
   - And lastly, the right side of the tree
-  > Keep in mind that the node's Left or Right properties can be `null`
+  > Keep in mind that the node's Left or Right properties can be `null` and therefore should be ignored
 
 **Example**  
 

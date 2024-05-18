@@ -46,7 +46,7 @@ ___
 ___
 Query the names of the meetup groups, order them by name (case-insensitive) and return the following statistics for each:  
 - Meetup group name
-- Number of events
+- Average number of attendees
 - Latest (Most recent) event's Title and Date
 - Has any event in that group ever had 200 or more attendees?
  
@@ -57,7 +57,6 @@ IEnumerable<MeetupStats> GetMeetupsStatistics(Meetup.DB meetups)
 public struct MeetupStats
 {
     public string Name;
-    public int EventsCount;
     public double AverageAttendees;
     public string LatestEventTitle;
     public DateTime LatestEventDate;

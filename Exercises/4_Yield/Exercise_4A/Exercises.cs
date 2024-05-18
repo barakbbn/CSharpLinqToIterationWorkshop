@@ -9,22 +9,6 @@ namespace Exercise_4A
 {
     public class Exercises
     {
-        public static IEnumerable<string> FizzBuzzSequence(IEnumerable<int> numbers)
-        {
-            throw new NotImplementedException();
-        }
-
-        // Bonus
-        public static IEnumerable<string> FizzBuzzSequenceBonus(IEnumerable<int> numbers)
-        {
-            return new[] { "Not Implemented Exception" };
-        }
-
-        public static IEnumerable<int> Fibonacci(int count)
-        {
-            throw new NotImplementedException();
-        }
-
         public class RemoveNulls<T> : IEnumerable<T>
         {
             // TODO: Implement Constructor
@@ -40,6 +24,22 @@ namespace Exercise_4A
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public static IEnumerable<string> FizzBuzzSequence(IEnumerable<int> numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Bonus
+        public static IEnumerable<string> FizzBuzzSequenceBonus(IEnumerable<int> numbers)
+        {
+            return new[] { "Not Implemented Exception" };
+        }
+
+        public static IEnumerable<int> Fibonacci(int count)
+        {
+            throw new NotImplementedException();
         }
     }
 

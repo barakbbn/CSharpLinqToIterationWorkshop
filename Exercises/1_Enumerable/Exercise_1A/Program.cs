@@ -20,5 +20,33 @@ namespace Exercise_1A
             // TODO: Add proper implementation
             throw new NotImplementedException();
         }
+
+        // TODO: Implement GetEnumerator()
+        // Always have the explicit interface IEnumerable.GetEnumerator() call the local GetEnumerator()
+    }
+
+
+    // TODO: Implement IEnumerable<T>
+    public class  DebugEnumerable<T>
+    {
+
+        public DebugEnumerable(IEnumerable<T> source)
+        {
+            // TODO: Add proper implementation
+            throw new NotImplementedException();
+        }
+
+
+        private class DebugEnumerator // TODO: Implement IEnumerator<T>
+        {
+            // TODO: add parameter to constructor  (DebugEnumerable<T> owner)
+            public DebugEnumerator()
+            {
+                // TODO: Add proper implementation
+                throw new NotImplementedException();
+            }
+
+            // TODO: Implement Dispose()
+        }
     }
 }
