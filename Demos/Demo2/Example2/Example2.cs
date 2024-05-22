@@ -1,26 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Demo2
 {
     /// <summary>
-    /// Custom collection that wraps another collection
+    /// Template implementation of IEnumerable/IEnumerator
     /// </summary>
     public class Example2
     {
         public void Run()
         {
-            var numbers = new[]
+            var strings = new[]
             {
-                "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
+                "0",
+                "1",
+                "Two",
+                "Three",
+                "4",
+                "5even",
+                "Eight",
+                "9"
             };
 
-            var filterBy3Letters = new FilteringCollection<string>(numbers, value => value.Length == 3);
+            var numbers = new OnlyNumbers(strings) as IEnumerable<int>;
 
-            foreach (string number in filterBy3Letters)
+            foreach (var value in numbers)
             {
-                Console.WriteLine(number);
+                Console.WriteLine(value);
             }
         }
-
     }
 }

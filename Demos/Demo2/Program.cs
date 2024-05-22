@@ -7,9 +7,9 @@ namespace Demo2
         static void Main(string[] args)
         {
             Console.WriteLine("Choose Example to run:");
-            Console.WriteLine("[1] - Table like data structure");
-            Console.WriteLine("[2] - Filtering Collection (like Where)");
-            Console.WriteLine("[3] - Range of numbers Collection");
+            Console.WriteLine("[1] - Range of numbers Collection");
+            Console.WriteLine("[2] - Template implementation (IndexPair)");
+            Console.WriteLine("[3] - Table like data structure");
 
             var promptUser = true;
             while (promptUser)

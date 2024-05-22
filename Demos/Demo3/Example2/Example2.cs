@@ -1,54 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace Demo3
 {
     /// <summary>
-    /// Iterator blocks and extension methods
+    /// Refactor to use yield return
     /// </summary>
     public class Example2
     {
         public void Run()
         {
-            Console.WriteLine("Iterating a range using Range method");
-            Console.WriteLine("-------------------------");
+            var numbers = new List<int> { -1, 0, 1, 2, 3, 4, 5 };
 
-            foreach (var value in Range(1, 3))
+            IEnumerable<int> positives = OnlyPositive(numbers); // 1, 2, 3, 4, 5
+            IEnumerable<int> only3Positives = GetRange(positives, fromIndex: 0, count: 3); // 1, 2, 3
+            IEnumerable<int> results = Calc(values: only3Positives, mathOperation: n => n * n); // 1, 4, 9
+
+            Console.Write("Results:");
+            foreach (var result in results)
             {
-                Console.WriteLine(value);
-            }
-            Console.WriteLine();
-
-
-            Console.WriteLine("Iterating Conrners of a Rectangle");
-            Console.WriteLine("-------------------------");
-
-            var rect = new Rectangle(10, 100, 90, 100);
-            Console.WriteLine($"Rectangle: {rect}");
-            Console.WriteLine("Corners:");
-            foreach (var value in GetCorners(rect))
-            {
-                Console.WriteLine(value);
+                Console.Write("  " + result);
             }
             Console.WriteLine();
         }
 
-        public static IEnumerable<int> Range(int from, int count)
+        public IEnumerable<int> OnlyPositive(IEnumerable<int> values)
         {
-            for (int max = @from + count; @from < max; @from++)
+            var results = new List<int>();
+            foreach (var n in values)
             {
-                yield return @from;
+                if (n > 0)
+                {
+                    results.Add(n);
+                }
             }
+
+            return results;
         }
 
-
-        public static IEnumerable<Point> GetCorners(Rectangle rect)
+        public IEnumerable<TOut> Calc<TIn, TOut>(
+            IEnumerable<TIn> values,
+            Func<TIn, TOut> mathOperation
+        )
         {
-            yield return rect.Location; // Top Left
-            yield return new Point(rect.Right, rect.Top); // Top Right
-            yield return new Point(rect.Left, rect.Bottom); // Bottom Left
-            yield return new Point(rect.Right, rect.Bottom); // Bottom Right
+            var results = new List<TOut>();
+            foreach (var item in values)
+            {
+                var result = mathOperation(item);
+                results.Add(result);
+            }
+
+            return results;
+        }
+
+        // TODO: implement
+        public IEnumerable<T> GetRange<T>(IEnumerable<T> values, int fromIndex, int count)
+        {
+            throw new NotImplementedException();
         }
     }
 }
