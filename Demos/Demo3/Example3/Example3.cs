@@ -10,7 +10,7 @@ namespace Demo3
         {
             Console.WriteLine("Multiplication table");
             Console.WriteLine("====================");
-            var oneTo10 = Example2.Range(1, 10);
+            var oneTo10 = Range(1, 10);
 
             foreach (var a in oneTo10)
             {
@@ -21,6 +21,15 @@ namespace Demo3
                 Console.WriteLine();
             }
             Console.WriteLine();
+        }
+
+        static IEnumerable<int> Range(int start, int count)
+        {
+            var end = start + count;
+            for (int value = start; value < end; value++)
+            {
+                yield return value;
+            }
         }
     }
 }

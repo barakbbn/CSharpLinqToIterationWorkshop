@@ -9,6 +9,29 @@ namespace Exercise_4A
 {
     public class Exercises
     {
+        public class RemoveNulls<T> : IEnumerable<T>
+        {
+            private readonly IEnumerable<T> _source;
+
+            public RemoveNulls(IEnumerable<T> source)
+            {
+                _source = source;
+            }
+
+            public IEnumerator<T> GetEnumerator()
+            {
+                foreach (var item in _source)
+                {
+                    if (item != null)
+                    {
+                        yield return item;
+                    }
+                }
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
         public static IEnumerable<string> FizzBuzzSequence(IEnumerable<int> numbers)
         {
             foreach (var n in numbers)
@@ -57,29 +80,6 @@ namespace Exercise_4A
                 yield return previous;
                 (previous, current) = (current, previous + current);
             }
-        }
-
-        public class RemoveNulls<T> : IEnumerable<T>
-        {
-            private readonly IEnumerable<T> _source;
-
-            public RemoveNulls(IEnumerable<T> source)
-            {
-                _source = source;
-            }
-
-            public IEnumerator<T> GetEnumerator()
-            {
-                foreach (var item in _source)
-                {
-                    if (item != null)
-                    {
-                        yield return item;
-                    }
-                }
-            }
-
-            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
     }
 

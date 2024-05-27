@@ -10,7 +10,15 @@ namespace Demo3
         {
             Console.WriteLine("Iterating Range class using yield");
             Console.WriteLine("-------------------------");
-            foreach (var value in new Range(1, 3))
+
+            var range = new Range(1, 3);
+
+            foreach (var value in range)
+            {
+                Console.WriteLine(value);
+            }
+
+            foreach (var value in range.Reversed)
             {
                 Console.WriteLine(value);
             }

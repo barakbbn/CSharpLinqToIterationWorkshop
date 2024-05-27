@@ -8,7 +8,7 @@ The challenge is to lazily load students info from a CSV file and convert them t
 In addition it should be done for several files
 
 ### Instructions &#x1F4DA;
-- Implement a class StudentsFileEnumerator - Responsible for reading students info from a CSV file
+- Implement a class `StudentsFileEnumerator` - Responsible for reading students info from a CSV file
   - It should implements `IEnumerable<StudentInfo>` interface
   - Constructor signature: (string studentsCsvFilePath)
   - GetEnumerator() should use `yield return`
@@ -17,7 +17,7 @@ In addition it should be done for several files
 - Should not use LINQ functionality
 - Make sure to close/dispose the file
 - Lazily read students from the CSV file (not all at once)
-- &#x2757; WARN: watch out from empty lines at end of file
+- &#x2757; WARN: watch out from empty lines
 
 <br>
 <br>

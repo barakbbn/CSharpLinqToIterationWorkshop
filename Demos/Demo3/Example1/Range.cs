@@ -6,34 +6,35 @@ namespace Demo3
 {
     public class Range : IEnumerable<int>
     {
+        private int _start;
+        private int _count;
+
         public Range(int start, int count)
         {
-            Start = start;
-            Count = count;
+            _start = start;
+            _count = count;
         }
-
-        private int Start { get; }
-        private int Count { get; }
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         public IEnumerator<int> GetEnumerator()
         {
-            for (int value = Start; value <(Start + Count); value++)
+            // No need to implement IEnumerator !!!
+            for (int i = 0; i < _count; i++)
             {
-                yield return value;
+                yield return _start + i;
             }
         }
 
-        public IEnumerable<int> ReverseOrder 
-        { 
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public IEnumerable<int> Reversed
+        {
             get
             {
-                for (int value = Start + Count - 1; value >= Start; value--)
+                for (int i = _count - 1; i >= 0; i--)
                 {
-                    yield return value;
+                    yield return _start + i;
                 }
-            } 
+            }
         }
     }
 }

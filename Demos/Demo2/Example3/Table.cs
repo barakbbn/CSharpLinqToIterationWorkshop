@@ -20,7 +20,6 @@ namespace Demo2
 
         public IEnumerator<T> GetEnumerator()
         {
-            Console.WriteLine("IEnumerable.GetEnumerator()");
             return new TableEnumerator(this);
         }
 

@@ -28,8 +28,7 @@ new CountdownSequence(-1); // -> []  empty
     - count parameter - The initial value to start counting down from, till zero  
   - GetEnumerator() method - Should return IEnumerator<int> with values from **count** till Zero  
 - If the **count** parameter is **zero**, the countdown should only include zero.
-- Negative **count** parameter is valid! if that case no numbers should be counted down  
-  (i.e. EMPTY sequence)
+- Negative **count** parameter is valid! if that case, nothing should be counted down (i.e. EMPTY sequence)  
 
 ```charp
 public class CountdownSequence // TODO: Implement IEnumerable<int>
@@ -42,5 +41,5 @@ public class CountdownSequence // TODO: Implement IEnumerable<int>
 
 
 ### Guidance &#x2B50;
-- Should not use LINQ functionality
-- Should not use `yield` keyword
+- Should **not** use LINQ functionality
+- Should **not** use `yield` keyword

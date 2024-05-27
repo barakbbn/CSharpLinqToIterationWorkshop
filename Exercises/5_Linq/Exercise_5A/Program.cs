@@ -18,11 +18,14 @@ namespace Exercise_5A
     public struct MeetupStats
     {
         public string Name;
-        public int EventsCount;
         public double AverageAttendees;
         public string LatestEventTitle;
         public DateTime LatestEventDate;
         public bool EverHadAtLeast200Attendees;
+        public override string ToString()
+        {
+            return $"{{Name: {Name}, AverageAttendees: {AverageAttendees}, LatestEventTitle: {LatestEventTitle}, LatestEventDate: {LatestEventDate:g}, EverHadAtLeast200Attendees: {EverHadAtLeast200Attendees}";
+        }
     }
 
     public static class Program
@@ -59,7 +62,6 @@ namespace Exercise_5A
                     return new MeetupStats
                     {
                         Name = group.Name,
-                        EventsCount = group.Events.Count(),
                         AverageAttendees = group.Events.Average(@event => @event.Attendees),
                         LatestEventTitle = latestEvent.Title,
                         LatestEventDate = latestEvent.When,
@@ -133,7 +135,6 @@ namespace Exercise_5A
             foreach (var stat in meetupsStats)
             {
                 Console.WriteLine(stat.Name);
-                Console.WriteLine($" - No' of Events: {stat.EventsCount}");
                 Console.WriteLine($" - Average Attendees: {stat.AverageAttendees}");
                 Console.WriteLine(
                     $" - Latest Event: {stat.LatestEventTitle} ({stat.LatestEventDate:Y})"

@@ -79,7 +79,6 @@ namespace Exercise_5A
                 new MeetupStats
                 {
                     Name = "ALT.NET Israel",
-                    EventsCount = 4,
                     AverageAttendees = 57,
                     LatestEventTitle = "ALT.NET Night - March 2023",
                     LatestEventDate = DateTime.Parse("2023-05-01T18:00:00+02:00"),
@@ -88,7 +87,6 @@ namespace Exercise_5A
                 new MeetupStats
                 {
                     Name = "Codecraft IL",
-                    EventsCount = 5,
                     AverageAttendees = 114.6,
                     LatestEventTitle = "Clean Code Principles#2",
                     LatestEventDate = DateTime.Parse("2022-05-29T11:00:00+03:00"),
@@ -97,7 +95,6 @@ namespace Exercise_5A
                 new MeetupStats
                 {
                     Name = "JavaScript Israel",
-                    EventsCount = 6,
                     AverageAttendees = 217.5,
                     LatestEventTitle = "Let's Go Headless - A Dive into Headless Components",
                     LatestEventDate = DateTime.Parse("2023-08-20T18:30:00+03:00"),
@@ -106,7 +103,6 @@ namespace Exercise_5A
                 new MeetupStats
                 {
                     Name = "life michael",
-                    EventsCount = 7,
                     AverageAttendees = 78,
                     LatestEventTitle = "Anti Patterns [Free Meetup]",
                     LatestEventDate = DateTime.Parse("2023-08-01T13:00:00+03:00"),
@@ -115,7 +111,6 @@ namespace Exercise_5A
                 new MeetupStats
                 {
                     Name = "Node.js Israel",
-                    EventsCount = 5,
                     AverageAttendees = 282.4,
                     LatestEventTitle = "May 2023 Node.js Monthly Meetup",
                     LatestEventDate = DateTime.Parse("2023-05-29T18:00:00+03:00"),

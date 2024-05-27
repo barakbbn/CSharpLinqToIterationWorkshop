@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
-using static Exercise_5B.Program;
 
 namespace Exercise_5B
 {
