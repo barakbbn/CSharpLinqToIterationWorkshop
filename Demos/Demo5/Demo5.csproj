@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Example1\Example1.cs" />
     <Compile Include="Example1\RandomSequence.cs" />
-    <Compile Include="Example1\SequenceLimiter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -43,10 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeferredHelper.cs" />
-    <Compile Include="EagerExecution\FilteringCollection.cs" />
-    <Compile Include="EagerExecution\Range.cs" />
-    <Compile Include="EagerExecution\SequenceLimiter.cs" />
-    <Compile Include="EagerExecution\Table.cs" />
     <Compile Include="ImmediateHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

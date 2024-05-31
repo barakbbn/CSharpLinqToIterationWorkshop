@@ -44,7 +44,7 @@ namespace Demo4
             numbers.Insert(0, 10);
 
             Console.WriteLine();
-            Console.Write("  Prpended 10 to Results:");
+            Console.Write("  Prepended 10 to Results:");
 
             foreach (var result in results)
             {

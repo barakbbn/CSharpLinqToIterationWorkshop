@@ -1,1 +1,1 @@
-﻿This project demonstrate explicit implementation of IEnumerable practicing deferred/eager execution
+﻿This project demonstrate immediate vs deferred implementation

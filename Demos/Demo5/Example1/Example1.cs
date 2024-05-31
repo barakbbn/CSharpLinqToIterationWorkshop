@@ -21,12 +21,6 @@ namespace Demo5
                 count++;
                 if (count >= limit) break;
             }
-
-
-            foreach (var value in new SequenceLimiter(new RandomSequence(), limit))
-            {
-                Console.Write("{0} , ", value);
-            }
         }
     }
 }
