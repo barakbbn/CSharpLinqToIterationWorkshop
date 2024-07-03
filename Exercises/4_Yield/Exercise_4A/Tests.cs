@@ -33,10 +33,7 @@ namespace Exercise_4A
             Assert.IsEmpty(actual);
         }
 
-        protected override object SutDeferredAction(IEnumerable<int> input)
-        {
-            return Exercises.FizzBuzzSequence(input);
-        }
+        protected override object SutDeferredAction(IEnumerable<int> input) => RunExercise(input);
 
         protected override IEnumerable<int> CreateSimpleInputSequence()
         {
