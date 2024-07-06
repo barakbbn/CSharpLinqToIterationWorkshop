@@ -12,6 +12,10 @@ namespace Exercise_1A
         }
     }
 
+    // ==========
+    // Exercise 1
+    // ==========
+
     // TODO: Implement IEnumerable<int>
     public class CountdownSequence
     {
@@ -24,6 +28,14 @@ namespace Exercise_1A
         // TODO: Implement GetEnumerator()
         // Always have the explicit interface IEnumerable.GetEnumerator() call the local GetEnumerator()
     }
+
+
+
+
+
+    // ==========
+    // Exercise 2
+    // ==========
 
 
     // TODO: Implement IEnumerable<T>
