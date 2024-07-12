@@ -34,7 +34,7 @@ namespace Exercise_4A
         // Bonus
         public static IEnumerable<string> FizzBuzzSequenceBonus(IEnumerable<int> numbers)
         {
-            return new[] { "Not Implemented Exception" };
+            throw new NotImplementedException();
         }
 
         public static IEnumerable<int> Fibonacci(int count)

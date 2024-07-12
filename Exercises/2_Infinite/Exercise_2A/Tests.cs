@@ -28,7 +28,7 @@ namespace Exercise_2A
             var source = CreateSimpleInputSequence();
             var input = TestableEnumerable.From(source);
             var sut = CreateEndlessCycle(input);
-            foreach (var item in (sut as IEnumerable))
+            foreach (var item in sut)
             {
                 break;
             }
@@ -62,7 +62,7 @@ namespace Exercise_2A
             var actual = new List<int>(size);
 
             var sut = CreateEndlessCycle<int>(input);
-            foreach (var v in (sut as IEnumerable<int>))
+            foreach (var v in sut)
             {
                 actual.Add(v);
                 if (actual.Count == size)
@@ -79,7 +79,7 @@ namespace Exercise_2A
         {
             var input = Enumerable.Empty<int>();
             var sut = CreateEndlessCycle<int>(input);
-            using (var enumerator = (sut as IEnumerable<int>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 var actual = enumerator.MoveNext();
                 Assert.False(actual);
@@ -96,7 +96,7 @@ namespace Exercise_2A
 
             var sut = CreateEndlessCycle<int>(input);
 
-            foreach (var v in (sut as IEnumerable<int>))
+            foreach (var v in sut)
             {
                 expected.Add(v);
                 if (expected.Count == size)
@@ -104,7 +104,7 @@ namespace Exercise_2A
                     break;
                 }
             }
-            foreach (var v in (sut as IEnumerable<int>))
+            foreach (var v in sut)
             {
                 actual.Add(v);
                 if (actual.Count == size)
@@ -123,7 +123,7 @@ namespace Exercise_2A
             var expected = input.Clone();
             var sut = CreateEndlessCycle<int>(input);
 
-            using (var enumerator = (sut as IEnumerable<int>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 for (var i = 0; i < 10; i++)
                 {
@@ -142,7 +142,7 @@ namespace Exercise_2A
 
             var sut = CreateEndlessCycle<int>(input);
             var counter = size;
-            foreach (var v in (sut as IEnumerable<int>))
+            foreach (var v in sut)
             {
                 counter--;
                 if (counter == 0)
@@ -162,7 +162,7 @@ namespace Exercise_2A
             }
 
             var actual = new List<int>(size);
-            foreach (var v in (sut as IEnumerable<int>))
+            foreach (var v in sut)
             {
                 actual.Add(v);
                 if (actual.Count == size)
@@ -179,7 +179,7 @@ namespace Exercise_2A
         {
             var input = TestableEnumerable.Range(0);
             var sut = CreateEndlessCycle<int>(input);
-            using (var enumerator = (sut as IEnumerable<int>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 enumerator.MoveNext();
                 Warn.If(
@@ -189,11 +189,16 @@ namespace Exercise_2A
             }
         }
 
-        private EndlessCycle<T> CreateEndlessCycle<T>(IEnumerable<T> input)
+        private IEnumerable<T> CreateEndlessCycle<T>(IEnumerable<T> input)
         {
-            return new EndlessCycle<T>(input);
-        }
+            var sut = new EndlessCycle<T>(input);
+            Assert.IsInstanceOf<IEnumerable<T>>(
+                sut,
+                "EndlessCycle doesn't implements interface IEnumerable"
+            );
 
+            return (IEnumerable<T>)sut;
+        }
 
         protected IEnumerable<int> CreateSimpleInputSequence()
         {

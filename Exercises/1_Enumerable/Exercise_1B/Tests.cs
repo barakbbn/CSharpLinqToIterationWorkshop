@@ -9,7 +9,7 @@ namespace Exercise_1B
 {
     public abstract class FizzBuzzSequenceTestsBase
     {
-        protected abstract FizzBuzzSequence CreateFizzBuzzSequence(IEnumerable<int> source);
+        protected abstract IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source);
 
         [Test]
         public void DivisibleBy3_ReturnsFizz()
@@ -18,7 +18,7 @@ namespace Exercise_1B
             var expected = new List<string>() { "Fizz", "Fizz", "Fizz" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -30,7 +30,7 @@ namespace Exercise_1B
             var expected = new List<string>() { "Buzz", "Buzz", "Buzz" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -42,7 +42,7 @@ namespace Exercise_1B
             var expected = new List<string>() { "1", "2", "4" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -54,7 +54,7 @@ namespace Exercise_1B
             var expected = new List<string>() { "0" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Warn.Unless(actual, Is.EqualTo(expected));
         }
@@ -64,7 +64,7 @@ namespace Exercise_1B
         {
             var input = Enumerable.Empty<int>();
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
             Assert.IsEmpty(actual);
         }
 
@@ -73,8 +73,8 @@ namespace Exercise_1B
         {
             var input = new List<int> { 1, 2, 3, 4, 5, 6, 7, 9, 10, 15, 20, 21 };
             var sut = CreateFizzBuzzSequence(input);
-            var expected = (sut as IEnumerable<string>).ToArray();
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var expected = sut.ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -84,7 +84,7 @@ namespace Exercise_1B
             var input = new List<int> { 1, 3, 5, 15 };
             var expected = new List<int>(input);
             var sut = CreateFizzBuzzSequence(input);
-            var forcedEnumeration = (sut as IEnumerable<string>).ToArray();
+            var forcedEnumeration = sut.ToArray();
             Assert.That(input, Is.EqualTo(expected));
         }
     }
@@ -99,7 +99,7 @@ namespace Exercise_1B
             var expected = new List<string>() { "FizzBuzz", "FizzBuzz", "FizzBuzz" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -109,17 +109,19 @@ namespace Exercise_1B
         {
             var input = new List<int> { 1, 3, 5, 15 };
             var sut = CreateFizzBuzzSequence(input);
-            var forcedEnumeration = (sut as IEnumerable<string>).ToArray();
+            var forcedEnumeration = sut.ToArray();
             input.RemoveAt(0);
             input.Add(7);
             var expected = new List<string>() { "Fizz", "Buzz", "FizzBuzz", "7" };
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        protected override FizzBuzzSequence CreateFizzBuzzSequence(IEnumerable<int> source)
+        protected override IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source)
         {
-            return (FizzBuzzSequence)Activator.CreateInstance(typeof(FizzBuzzSequence), source);
+            var sut = (FizzBuzzSequence)Activator.CreateInstance(typeof(FizzBuzzSequence), source);
+            Assert.IsInstanceOf<IEnumerable<string>>(sut, "FizzBuzzSequence doesn't implement interface IEnumerable<string>");
+            return (IEnumerable<string>)sut;
         }
     }
 
@@ -133,7 +135,7 @@ namespace Exercise_1B
             var expected = new List<string>() { "Fizz", "Buzz", "Fizz", "Buzz", "Fizz", "Buzz" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -143,18 +145,19 @@ namespace Exercise_1B
         {
             var input = new List<int> { 1, 3, 5, 15 };
             var sut = CreateFizzBuzzSequence(input);
-            var forcedEnumeration = (sut as IEnumerable<string>).ToArray();
+            var forcedEnumeration = sut.ToArray();
             input.RemoveAt(0);
             input.Add(7);
             var expected = new List<string>() { "Fizz", "Buzz", "Fizz", "Buzz", "7" };
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        protected override FizzBuzzSequence CreateFizzBuzzSequence(IEnumerable<int> source)
+        protected override IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source)
         {
-            return (FizzBuzzSequence)
-                Activator.CreateInstance(typeof(FizzBuzzSequence), source, true);
+            var sut = (FizzBuzzSequence)Activator.CreateInstance(typeof(FizzBuzzSequence), source, true);
+            Assert.IsInstanceOf<IEnumerable<string>>(sut, "FizzBuzzSequence doesn't implement interface IEnumerable<string>");
+            return (IEnumerable<string>)sut;
         }
     }
 }

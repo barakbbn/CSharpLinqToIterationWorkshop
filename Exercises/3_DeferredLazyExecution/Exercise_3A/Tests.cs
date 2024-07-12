@@ -18,7 +18,7 @@ namespace Exercise_3A
 
             // If internally values prepared in advance when calling GetEnumerator()
             // The thread will stuck and this Test will fail after the defined timeout
-            using (var enumerator = (sut as IEnumerable<double>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 Assert.Pass();
             }
@@ -28,7 +28,7 @@ namespace Exercise_3A
         {
             // Using huge range of values
             var sut = CreateWavelengthsSampling(1, int.MaxValue, int.MaxValue);
-            using (var enumerator = (sut as IEnumerable<double>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 // If internally values prepared in advance when calling MoveNext()
                 // The thread will stuck and this Test will fail after the defined timeout
@@ -37,16 +37,22 @@ namespace Exercise_3A
             }
         }
 
-        private WavelengthsSampling CreateWavelengthsSampling(double min, double max, int amount)
+        private IEnumerable<double> CreateWavelengthsSampling(double min, double max, int amount)
         {
-            return (WavelengthsSampling)
+            var sut = (WavelengthsSampling)
                 Activator.CreateInstance(typeof(WavelengthsSampling), min, max, amount);
+            Assert.IsInstanceOf<IEnumerable<double>>(
+                sut,
+                "WavelengthsSampling doesn't implement interface IEnumerable<double>"
+            );
+
+            return (IEnumerable<double>)sut;
         }
     }
 
     public abstract class FizzBuzzSequenceTestsBase : CommonDeferredOnInputEnumerableTests<int>
     {
-        protected abstract FizzBuzzSequence CreateFizzBuzzSequence(IEnumerable<int> source);
+        protected abstract IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source);
 
         [Test]
         public void EdgeCase_Zero_ReturnZeroAsString()
@@ -55,7 +61,7 @@ namespace Exercise_3A
             var expected = new List<string>() { "0" };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Warn.Unless(actual, Is.EqualTo(expected));
         }
@@ -65,7 +71,7 @@ namespace Exercise_3A
         {
             var input = Enumerable.Empty<int>();
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
             Assert.IsEmpty(actual);
         }
 
@@ -74,8 +80,8 @@ namespace Exercise_3A
         {
             var input = new List<int> { 1, 2, 3, 4, 5, 6, 7, 9, 10, 15, 20, 21 };
             var sut = CreateFizzBuzzSequence(input);
-            var expected = (sut as IEnumerable<string>).ToArray();
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var expected = sut.ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -84,7 +90,7 @@ namespace Exercise_3A
         {
             var input = TestableEnumerable.Range(3);
             var sut = CreateFizzBuzzSequence(input);
-            using (var enumerator = (sut as IEnumerable<string>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 enumerator.MoveNext();
                 Assert.False(input.MoveNextCompleted);
@@ -96,7 +102,7 @@ namespace Exercise_3A
         {
             var input = TestableEnumerable.Range(3);
             var sut = CreateFizzBuzzSequence(input);
-            using (var enumerator = (sut as IEnumerable<string>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 while (enumerator.MoveNext())
                     ;
@@ -172,7 +178,7 @@ namespace Exercise_3A
             };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -182,17 +188,22 @@ namespace Exercise_3A
         {
             var input = new List<int> { 1, 3, 5, 15 };
             var sut = CreateFizzBuzzSequence(input);
-            var forcedEnumeration = (sut as IEnumerable<string>).ToArray();
+            var forcedEnumeration = sut.ToArray();
             input.RemoveAt(0);
             input.Add(7);
             var expected = new List<string>() { "Fizz", "Buzz", "FizzBuzz", "7" };
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        protected override FizzBuzzSequence CreateFizzBuzzSequence(IEnumerable<int> source)
+        protected override IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source)
         {
-            return (FizzBuzzSequence)Activator.CreateInstance(typeof(FizzBuzzSequence), source);
+            var sut = (FizzBuzzSequence)Activator.CreateInstance(typeof(FizzBuzzSequence), source);
+            Assert.IsInstanceOf<IEnumerable<string>>(
+                sut,
+                "FizzBuzzSequence doesn't implement interface IEnumerable<string>"
+            );
+            return (IEnumerable<string>)sut;
         }
     }
 
@@ -251,7 +262,7 @@ namespace Exercise_3A
             };
 
             var sut = CreateFizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
@@ -261,18 +272,23 @@ namespace Exercise_3A
         {
             var input = new List<int> { 1, 3, 5, 15 };
             var sut = CreateFizzBuzzSequence(input);
-            var forcedEnumeration = (sut as IEnumerable<string>).ToArray();
+            var forcedEnumeration = sut.ToArray();
             input.RemoveAt(0);
             input.Add(7);
             var expected = new List<string>() { "Fizz", "Buzz", "Fizz", "Buzz", "7" };
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        protected override FizzBuzzSequence CreateFizzBuzzSequence(IEnumerable<int> source)
+        protected override IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source)
         {
-            return (FizzBuzzSequence)
+            var sut = (FizzBuzzSequence)
                 Activator.CreateInstance(typeof(FizzBuzzSequence), source, true);
+            Assert.IsInstanceOf<IEnumerable<string>>(
+                sut,
+                "FizzBuzzSequence doesn't implement interface IEnumerable<string>"
+            );
+            return (IEnumerable<string>)sut;
         }
     }
 
@@ -284,7 +300,7 @@ namespace Exercise_3A
         {
             var input = TestableEnumerable.Range(3);
             var sut = CreateDistinctUntilChanged<int>(input);
-            using (var enumerator = (sut as IEnumerable<int>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 enumerator.MoveNext();
                 Assert.False(input.MoveNextCompleted);
@@ -296,7 +312,7 @@ namespace Exercise_3A
         {
             var input = TestableEnumerable.Range(3);
             var sut = CreateDistinctUntilChanged<int>(input);
-            using (var enumerator = (sut as IEnumerable<int>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 while (enumerator.MoveNext())
                     ;
@@ -307,16 +323,22 @@ namespace Exercise_3A
             }
         }
 
-        private DistinctUntilChanged<T> CreateDistinctUntilChanged<T>(
+        private IEnumerable<T> CreateDistinctUntilChanged<T>(
             IEnumerable<T> input,
             IEqualityComparer<T> comparer = null
         )
         {
-            var instance =
+            var sut =
                 (comparer == null)
                     ? Activator.CreateInstance(typeof(DistinctUntilChanged<T>), input)
                     : Activator.CreateInstance(typeof(DistinctUntilChanged<T>), input, comparer);
-            return (DistinctUntilChanged<T>)instance;
+
+            Assert.IsInstanceOf<IEnumerable<T>>(
+                sut,
+                "DistinctUntilChanged doesn't implement interface IEnumerable"
+            );
+
+            return (IEnumerable<T>)sut;
         }
 
         protected override object SutDeferredAction(IEnumerable<int> input)
