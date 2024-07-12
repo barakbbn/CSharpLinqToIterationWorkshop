@@ -26,16 +26,13 @@ namespace Demo3
 
         public IEnumerable<int> OnlyPositive(IEnumerable<int> values)
         {
-            var results = new List<int>();
             foreach (var n in values)
             {
                 if (n > 0)
                 {
-                    results.Add(n);
+                    yield return n;
                 }
             }
-
-            return results;
         }
 
         public IEnumerable<TOut> Calc<TIn, TOut>(
@@ -43,20 +40,23 @@ namespace Demo3
             Func<TIn, TOut> mathOperation
         )
         {
-            var results = new List<TOut>();
             foreach (var item in values)
             {
                 var result = mathOperation(item);
-                results.Add(result);
+                yield return result;
             }
-
-            return results;
         }
 
         // TODO: implement
         public IEnumerable<T> GetRange<T>(IEnumerable<T> values, int fromIndex, int count)
         {
-            throw new NotImplementedException();
+            int i = 0;
+            foreach (var value in values)
+            {
+                if(i == fromIndex + count) break;
+                if (i++ < fromIndex) continue;
+                yield return value;
+            }
         }
     }
 }

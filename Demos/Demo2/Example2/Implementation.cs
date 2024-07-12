@@ -47,6 +47,10 @@ namespace Demo2
 
                 // If you choose so, use `this._state` for manage the logic
                 return false;
+
+                // It's preferred that if there is an exception in this method, then you should catch, call dispose() and rethrow
+
+                // It's preferred if you to call Dispose() as soon as you about to return false;
             }
 
             // ===================
