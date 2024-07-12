@@ -15,10 +15,10 @@ and for each number:
 **Example**  
 
 ```csharp
-var source = new[]{1, 2, 3, 4, 5, 6, 15 ,9 ,10, 11};
+var source = new[]{1, 2, 3, 4, 5, 6, ,7 ,8 ,9 ,10, 11, 12, 13, 14, 15 ,16};
 var fizzBuzz = new FizzBuzzSequence(source);
-// Will Generate: "1", "2", "Fizz", 4, "Buzz", "6", "FizzBuzz", "Fizz", "Buzz", "11"
-//                           --3--      --5--        ---15---    --9--  --10--
+// Will Generate: "1", "2", "Fizz", 4, "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16"
+//                           --3--      --5--   --6--             --9--  --10--        --12--               ---15---  
 ```
 
 ### Instructions &#x1F4DA;  

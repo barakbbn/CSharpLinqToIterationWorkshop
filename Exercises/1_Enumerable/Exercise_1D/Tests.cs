@@ -14,8 +14,8 @@ namespace Exercise_1D
         {
             var input = "Why do java programmers wear glasses? They can't C# ...";
             var expected = "Why do java programers wear glases? They can't C# .";
-            var sut = CreateDistinctUntilChanged<char>(input);
-            var actual = (sut as IEnumerable<char>).ToArray();
+            var sut = CreateSut<char>(input);
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -24,8 +24,8 @@ namespace Exercise_1D
         {
             var input = new object[] { null, null, true, true, false, false, true };
             var expected = new List<object>() { null, true, false, true };
-            var sut = CreateDistinctUntilChanged<object>(input);
-            var actual = (sut as IEnumerable<object>).ToArray();
+            var sut = CreateSut<object>(input);
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -33,8 +33,8 @@ namespace Exercise_1D
         public void EmptyInput_ProducesNoValues()
         {
             var input = Enumerable.Empty<int>();
-            var sut = CreateDistinctUntilChanged<int>(input);
-            var actual = (sut as IEnumerable<int>).ToArray();
+            var sut = CreateSut<int>(input);
+            var actual = sut.ToArray();
             Assert.IsEmpty(actual);
         }
 
@@ -42,9 +42,9 @@ namespace Exercise_1D
         public void Enumerate_EnumerateAgain_ProducesSameResults()
         {
             IEnumerable<int> input = new[] { 0, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 2, 2, 1, 0 };
-            var sut = CreateDistinctUntilChanged<int>(input);
-            var expected = (sut as IEnumerable<int>).ToArray();
-            var actual = (sut as IEnumerable<int>).ToArray();
+            var sut = CreateSut<int>(input);
+            var expected = sut.ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -53,8 +53,8 @@ namespace Exercise_1D
         {
             var input = new[] { 0, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 2, 2, 1, 0 };
             var expected = input.Clone();
-            var sut = CreateDistinctUntilChanged<int>(input);
-            var forcedEnumeration = (sut as IEnumerable<int>).ToArray();
+            var sut = CreateSut<int>(input);
+            var forcedEnumeration = sut.ToArray();
             Assert.That(input, Is.EqualTo(expected));
         }
 
@@ -79,8 +79,8 @@ namespace Exercise_1D
         public void Enumerate_InputEnumeratorDisposed()
         {
             var input = new TestableEnumerable(3);
-            var sut = CreateDistinctUntilChanged<int>(input);
-            (sut as IEnumerable<int>).ToArray();
+            var sut = CreateSut<int>(input);
+            sut.ToArray();
             Warn.Unless(
                 input.DisposedCount > 0,
                 "Expected 'input' internal IEnumerator to be disposed"
@@ -91,11 +91,11 @@ namespace Exercise_1D
         public void ChangeInput_ProducesCorrectResultsForChangedInput()
         {
             var input = new LinkedList<int>(new[] { 21, 12 });
-            var sut = CreateDistinctUntilChanged<int>(input);
-            (sut as IEnumerable<int>).ToArray();
+            var sut = CreateSut<int>(input);
+            sut.ToArray();
             input.RemoveFirst();
             input.AddLast(0);
-            var actual = (sut as IEnumerable<int>).ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(input));
         }
 
@@ -114,11 +114,8 @@ namespace Exercise_1D
                 "Dragon-fruit"
             };
             var expected = new[] { "Apple", "Berry", "cherry", "Dragon Fruit", "Dragon-fruit" };
-            var sut = CreateDistinctUntilChanged<string>(
-                input,
-                StringComparer.CurrentCultureIgnoreCase
-            );
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var sut = CreateSut<string>(input, StringComparer.CurrentCultureIgnoreCase);
+            var actual = sut.ToArray();
             Warn.Unless(actual, Is.EqualTo(expected).IgnoreCase);
         }
 
@@ -175,16 +172,35 @@ namespace Exercise_1D
             public int Count { get; private set; }
         }
 
-        private DistinctUntilChanged<T> CreateDistinctUntilChanged<T>(
+        private IEnumerable<T> CreateSut<T>(
             IEnumerable<T> source,
             IEqualityComparer<T> comparer = null
         )
         {
-            var instance =
+            var sut = CreateDistinctUntilChanged(source, comparer);
+            Assert.IsInstanceOf<IEnumerable<T>>(
+                sut,
+                "DistinctUntilChanged doesn't implement interface IEnumerable"
+            );
+            return (IEnumerable<T>)sut;
+        }
+
+        private IEnumerable<T> CreateDistinctUntilChanged<T>(
+            IEnumerable<T> source,
+            IEqualityComparer<T> comparer = null
+        )
+        {
+            var sut =
                 (comparer == null)
                     ? new DistinctUntilChanged<T>(source)
                     : new DistinctUntilChanged<T>(source, comparer);
-            return instance;
+
+            Assert.IsInstanceOf<IEnumerable<T>>(
+                sut,
+                "DistinctUntilChanged doesn't implement interface IEnumerable"
+            );
+
+            return (IEnumerable<T>)sut;
         }
     }
 }

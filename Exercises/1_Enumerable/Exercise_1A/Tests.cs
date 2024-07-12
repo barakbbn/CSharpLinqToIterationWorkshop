@@ -12,7 +12,7 @@ namespace Exercise_1A
         [Test]
         public void CountIsNegative_ReturnEmptyResults()
         {
-            var sut = CreateSut(-1) as IEnumerable<int>;
+            var sut = CreateSut(-1);
             var actual = new List<int>();
             foreach (var value in sut)
             {
@@ -24,7 +24,7 @@ namespace Exercise_1A
         [Test]
         public void CountIsZero_ReturnedSequenceContainsOnlyZero()
         {
-            var sut = CreateSut(0) as IEnumerable<int>;
+            var sut = CreateSut(0);
             var actual = new List<int>();
             var expected = new[] { 0 };
             foreach (var value in sut)
@@ -38,7 +38,7 @@ namespace Exercise_1A
         public void CountIsPositive_ReturnsSequenceWithNumbersFromCountTillZero()
         {
             var count = 5;
-            var sut = CreateSut(count) as IEnumerable<int>;
+            var sut = CreateSut(count);
             var actual = new List<int>();
             var expected = new List<int>();
             while (count >= 0)
@@ -56,14 +56,16 @@ namespace Exercise_1A
         public void Enumerate_EnumerateAgain_ProducesSameResults()
         {
             var sut = CreateSut(5);
-            var expected = (sut as IEnumerable<int>).ToArray();
-            var actual = (sut as IEnumerable<int>).ToArray();
+            var expected = sut.ToArray();
+            var actual = sut.ToArray();
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        private CountdownSequence CreateSut(int count)
+        private IEnumerable<int> CreateSut(int count)
         {
-            return new CountdownSequence(count);
+            var sut = new CountdownSequence(count);
+            Assert.IsInstanceOf<IEnumerable<int>>(sut, "CountdownSequence doesn't implement interface IEnumerable<int>");
+            return (IEnumerable<int>)sut;
         }
     }
 }

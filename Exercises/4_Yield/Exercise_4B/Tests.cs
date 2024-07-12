@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using NUnit.Framework;
+using TestsUtils;
 
 namespace Exercise_4B
 {
@@ -61,11 +62,12 @@ namespace Exercise_4B
             WriteStudentsToFile(expected);
 
             var sut = CreateStudentsFileEnumerator(studentsFilename);
-            var actual = (sut as IEnumerable<StudentInfo>).ToArray();
+            var actual = sut.ToArray();
 
             Assert.That(
                 actual,
-                Is.EqualTo(expected).Using(new TestHelper.StudentInfoEqualityComparer())
+                Is.EqualTo(expected)
+                    .Using(new StudentsFileEnumeratorTestHelper.StudentInfoEqualityComparer())
             );
         }
 
@@ -74,7 +76,7 @@ namespace Exercise_4B
         {
             var studentsFilename = CreateTestStudentsFile(0, false);
             var sut = CreateStudentsFileEnumerator(studentsFilename);
-            var actual = (sut as IEnumerable<StudentInfo>).ToArray();
+            var actual = sut.ToArray();
             Assert.IsEmpty(actual);
         }
 
@@ -83,7 +85,7 @@ namespace Exercise_4B
         {
             var studentsFilename = CreateTestStudentsFile(0, true);
             var sut = CreateStudentsFileEnumerator(studentsFilename);
-            var actual = (sut as IEnumerable<StudentInfo>);
+            var actual = sut;
             Assert.IsEmpty(actual);
         }
 
@@ -92,13 +94,14 @@ namespace Exercise_4B
         {
             var studentsFilename = CreateTestStudentsFile(5, true);
             var sut = CreateStudentsFileEnumerator(studentsFilename);
-            var expected = (sut as IEnumerable<StudentInfo>);
+            var expected = sut;
 
-            var actual = (sut as IEnumerable<StudentInfo>);
+            var actual = sut;
 
             Assert.That(
                 actual,
-                Is.EqualTo(expected).Using(new TestHelper.StudentInfoEqualityComparer())
+                Is.EqualTo(expected)
+                    .Using(new StudentsFileEnumeratorTestHelper.StudentInfoEqualityComparer())
             );
         }
 
@@ -138,10 +141,11 @@ namespace Exercise_4B
 
             WriteStudentsToFile(expected, false);
 
-            var actual = (sut as IEnumerable<StudentInfo>);
+            var actual = sut;
             Assert.That(
                 actual,
-                Is.EqualTo(expected).Using(new TestHelper.StudentInfoEqualityComparer())
+                Is.EqualTo(expected)
+                    .Using(new StudentsFileEnumeratorTestHelper.StudentInfoEqualityComparer())
             );
         }
 
@@ -154,10 +158,16 @@ namespace Exercise_4B
                 var stream = File.Open(tempFilename, FileMode.Open, FileAccess.Read, FileShare.None)
             )
             {
-                Assert.DoesNotThrow(
-                    () => CreateStudentsFileEnumerator(tempFilename),
-                    "Expected file not the be accessed before iteration starts"
-                );
+                try
+                {
+                    CreateStudentsFileEnumerator(tempFilename);
+                }
+                catch (IOException)
+                {
+                    Assert.Fail(
+                        "Expected file not the be accessed before iteration starts (Specially not in Constructor)"
+                    );
+                }
             }
         }
 
@@ -170,15 +180,17 @@ namespace Exercise_4B
                 var stream = File.Open(tempFilename, FileMode.Open, FileAccess.Read, FileShare.None)
             )
             {
-                Assert.DoesNotThrow(
-                    () =>
-                    {
-                        var sut =
-                            CreateStudentsFileEnumerator(tempFilename) as IEnumerable<StudentInfo>;
-                        sut.GetEnumerator();
-                    },
-                    "Expected file not the be accessed before iteration starts"
-                );
+                try
+                {
+                    var sut = CreateStudentsFileEnumerator(tempFilename);
+                    sut.GetEnumerator();
+                }
+                catch (IOException)
+                {
+                    Assert.Fail(
+                        "Expected file not the be accessed before iteration starts (i.e. foreach)"
+                    );
+                }
             }
         }
 
@@ -187,7 +199,7 @@ namespace Exercise_4B
         {
             var tempFilename = CreateTestStudentsFile();
             var sut = new TestableStudentsFileEnumeratorTests(tempFilename);
-            using (var enumerator = (sut as IEnumerable<StudentInfo>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 var hasNext = enumerator.MoveNext();
                 Assert.True(hasNext);
@@ -229,7 +241,7 @@ namespace Exercise_4B
         {
             var tempFilename = CreateTestStudentsFile();
             var sut = new TestableStudentsFileEnumeratorTests(tempFilename);
-            using (var enumerator = (sut as IEnumerable<StudentInfo>).GetEnumerator())
+            using (var enumerator = sut.GetEnumerator())
             {
                 while (enumerator.MoveNext())
                     ;
@@ -249,7 +261,7 @@ namespace Exercise_4B
 
         private string CreateTestStudentsFile(int numberOfStudents = 1, bool header = true)
         {
-            return _studentsFilePath = TestHelper.CreateTestStudentsFile(
+            return _studentsFilePath = StudentsFileEnumeratorTestHelper.CreateTestStudentsFile(
                 Path.GetTempPath(),
                 numberOfStudents,
                 header,
@@ -259,7 +271,7 @@ namespace Exercise_4B
 
         private void WriteStudentsToFile(IEnumerable<StudentInfo> students, bool append = true)
         {
-            var lines = TestHelper.StudentsToCsvLines(students);
+            var lines = StudentsFileEnumeratorTestHelper.StudentsToCsvLines(students);
             if (append)
             {
                 File.AppendAllLines(_studentsFilePath, lines);
@@ -272,9 +284,15 @@ namespace Exercise_4B
             }
         }
 
-        private StudentsFileEnumerator CreateStudentsFileEnumerator(string studentsFilename)
+        private IEnumerable<StudentInfo> CreateStudentsFileEnumerator(string studentsFilename)
         {
-            return new StudentsFileEnumerator(studentsFilename);
+            var sut = new StudentsFileEnumerator(studentsFilename);
+            Assert.IsInstanceOf<IEnumerable<StudentInfo>>(
+                sut,
+                "StudentsFileEnumerator doesn't implement interface IEnumerable<StudentInfo>"
+            );
+
+            return (IEnumerable<StudentInfo>)sut;
         }
 
         private class TestableStudentsFileEnumeratorTests : StudentsFileEnumerator
@@ -282,7 +300,13 @@ namespace Exercise_4B
             internal StreamReader _studentsStreamReader;
 
             public TestableStudentsFileEnumeratorTests(string studentsCsvFilePath)
-                : base(studentsCsvFilePath) { }
+                : base(studentsCsvFilePath)
+            {
+                Assert.IsInstanceOf<IEnumerable<StudentInfo>>(
+                    this,
+                    "StudentsFileEnumerator doesn't implement interface IEnumerable<StudentInfo>"
+                );
+            }
 
             public int OpenStudentsFileCallCount { get; private set; }
 
@@ -300,17 +324,8 @@ namespace Exercise_4B
         }
     }
 
-    internal static class TestHelper
+    internal static class StudentsFileEnumeratorTestHelper
     {
-        public static void Enumerate(object obj)
-        {
-            var enumerable = obj as IEnumerable;
-            if (enumerable != null)
-            {
-                enumerable.OfType<object>().ToList();
-            }
-        }
-
         internal class StudentInfoEqualityComparer : IEqualityComparer<StudentInfo>
         {
             public bool Equals(StudentInfo x, StudentInfo y)
@@ -394,7 +409,7 @@ namespace Exercise_4B
 
         public static IList<string> StudentsToCsvLines(IEnumerable<StudentInfo> students)
         {
-            return students.Select(TestHelper.StudentToCsvLine).ToList();
+            return students.Select(StudentsFileEnumeratorTestHelper.StudentToCsvLine).ToList();
         }
     }
 }

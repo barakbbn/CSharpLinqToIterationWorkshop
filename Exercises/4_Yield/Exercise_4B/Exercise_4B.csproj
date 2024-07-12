@@ -76,7 +76,12 @@
       <Link>.gitignore</Link>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\TestsUtils\TestsUtils.csproj">
+      <Project>{4DAD88CB-F24D-4576-826E-4E25961CEA69}</Project>
+      <Name>TestsUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

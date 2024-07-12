@@ -10,7 +10,7 @@ namespace Exercise_4A
 {
     public abstract class FizzBuzzSequenceTestsBase : CommonDeferredOnInputEnumerableTests<int>
     {
-        protected abstract IEnumerable<string> RunExercise(IEnumerable<int> source);
+        protected abstract IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source);
 
         [Test]
         public void EdgeCase_Zero_ReturnZeroAsString()
@@ -18,8 +18,8 @@ namespace Exercise_4A
             var input = new List<int>() { 0 };
             var expected = new List<string>() { "0" };
 
-            var sut = Exercises.FizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var sut = CreateFizzBuzzSequence(input);
+            var actual = sut.ToArray();
 
             Warn.Unless(actual, Is.EqualTo(expected));
         }
@@ -28,12 +28,12 @@ namespace Exercise_4A
         public void EmptyInput_ProducesNoValues()
         {
             var input = Enumerable.Empty<int>();
-            var sut = Exercises.FizzBuzzSequence(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var sut = CreateFizzBuzzSequence(input);
+            var actual = sut.ToArray();
             Assert.IsEmpty(actual);
         }
 
-        protected override object SutDeferredAction(IEnumerable<int> input) => RunExercise(input);
+        protected override object SutDeferredAction(IEnumerable<int> input) => CreateFizzBuzzSequence(input);
 
         protected override IEnumerable<int> CreateSimpleInputSequence()
         {
@@ -94,13 +94,13 @@ namespace Exercise_4A
                 "Buzz"
             };
 
-            var sut = RunExercise(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var sut = CreateFizzBuzzSequence(input);
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        protected override IEnumerable<string> RunExercise(IEnumerable<int> source) =>
+        protected override IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source) =>
             Exercises.FizzBuzzSequence(source);
     }
 
@@ -158,13 +158,13 @@ namespace Exercise_4A
                 "Buzz"
             };
 
-            var sut = RunExercise(input);
-            var actual = (sut as IEnumerable<string>).ToArray();
+            var sut = CreateFizzBuzzSequence(input);
+            var actual = sut.ToArray();
 
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        protected override IEnumerable<string> RunExercise(IEnumerable<int> source) =>
+        protected override IEnumerable<string> CreateFizzBuzzSequence(IEnumerable<int> source) =>
             Exercises.FizzBuzzSequenceBonus(source);
     }
 

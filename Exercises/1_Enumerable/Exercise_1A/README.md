@@ -4,6 +4,8 @@
 **Time:** 15 min  
 ___
 
+### Exercise 1 - Countdown Sequence
+
 In this exercise we'll practice implementation of `IEnumerable` and `GetEnumerator()`.  
 The challenge is create a Countdown sequence that counts from provided number to Zero
 
@@ -38,7 +40,33 @@ public class CountdownSequence // TODO: Implement IEnumerable<int>
 }
 ```
 
+### Guidance &#x2B50;
+- Should **not** use LINQ functionality
+- Should **not** use `yield` keyword
 
+
+### Exercise 2 - Debug Enumerable
+
+n this exercise we'll practice implementation of `IEnumerable` and `IEnumerator`.  
+Implements class `DebugEnumerable` perform `Console.WriteLine()` for each method/property implemented by `IEnumerable` and `IEnumerator`.  
+It should accept a source IEnumerable as input, to iterate on.
+
+### Instructions &#x1F4DA;
+- Implement a class **DebugEnumerable**
+  - It should implements IEnumerable&lt;T&gt;
+  - Constructor signature is: (IEnumerable&lt;T&gt; source)  
+
+```charp
+public class DebugEnumerable // TODO: Implement IEnumerable<T>
+{
+    public DebugEnumerable(IEnumerable<T> source) {}
+
+    // TODO: DebugEnumerator class
+    private class DebugEnumerator // TODO: Implement IEnumerator<T>
+    {
+    }
+}
+```
 
 ### Guidance &#x2B50;
 - Should **not** use LINQ functionality

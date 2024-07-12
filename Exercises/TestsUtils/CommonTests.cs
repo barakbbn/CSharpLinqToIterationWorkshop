@@ -12,12 +12,23 @@ namespace TestsUtils
         protected abstract object SutDeferredAction(IEnumerable<T> input);
         protected abstract IEnumerable<T> CreateSimpleInputSequence();
 
+        private IEnumerable SafeSutDeferredAction(IEnumerable<T> input)
+        {
+            var sut = SutDeferredAction(input);
+            Assert.IsInstanceOf<IEnumerable>(
+                sut,
+                $"{sut.GetType().Name} doesn't implement interface IEnumerable"
+            );
+
+            return (IEnumerable)sut;
+        }
+
         [Test]
         public void Enumerate_InputEnumeratorDisposed()
         {
             var source = CreateSimpleInputSequence();
             var input = TestableEnumerable.From(source);
-            var sut = SutDeferredAction(input);
+            var sut = SafeSutDeferredAction(input);
             TestHelper.Enumerate(sut);
             Warn.Unless(
                 input.DisposedCount > 0,
@@ -30,8 +41,8 @@ namespace TestsUtils
         {
             var source = CreateSimpleInputSequence();
             var input = TestableEnumerable.From(source);
-            var sut = SutDeferredAction(input);
-            foreach (var item in (sut as IEnumerable))
+            var sut = SafeSutDeferredAction(input);
+            foreach (var item in sut)
             {
                 break;
             }
@@ -44,14 +55,14 @@ namespace TestsUtils
         [Test]
         public void InputIsNull_Throw()
         {
-            TestHelper.ShouldWarn_WhenParameterIsNull(null, () => SutDeferredAction(null));
+            TestHelper.ShouldWarn_WhenParameterIsNull(null, () => SafeSutDeferredAction(null));
         }
 
         [Test]
         public void GetEnumerator_InputNotIterated()
         {
             var source = CreateSimpleInputSequence();
-            TestHelper.GetEnumerator_InputNotIterated(source, SutDeferredAction);
+            TestHelper.GetEnumerator_InputNotIterated(source, SafeSutDeferredAction);
         }
 
         [Test]
@@ -59,7 +70,7 @@ namespace TestsUtils
         {
             var source = CreateSimpleInputSequence();
             var input = TestableEnumerable.From(source);
-            var sut = SutDeferredAction(input);
+            var sut = SafeSutDeferredAction(input);
             TestHelper.Enumerate(sut);
             Assert.AreEqual(
                 1,
@@ -73,8 +84,8 @@ namespace TestsUtils
         {
             var source = CreateSimpleInputSequence();
             var input = TestableEnumerable.From(source);
-            var sut = SutDeferredAction(input);
-            var enumerator = (sut as IEnumerable).GetEnumerator();
+            var sut = SafeSutDeferredAction(input);
+            var enumerator = sut.GetEnumerator();
             while (enumerator.MoveNext())
             {
                 // just consuming the enumerator
