@@ -69,7 +69,7 @@ namespace Exercise_5A
     }
 
     [TestFixture]
-    public class MeetupTests
+    public class Challenge2Tests
     {
         [Test]
         public void GetMeetupsStatistics()
@@ -119,7 +119,7 @@ namespace Exercise_5A
             };
 
             var meetups = Meetup.DB.Load();
-            var actual = Program.GetMeetupsStatistics(meetups).ToList();
+            var actual = Program.Challenge2_GetMeetupsStatistics(meetups).ToList();
 
             if (actual.Count != expected.Length)
             {
@@ -133,11 +133,15 @@ namespace Exercise_5A
                 var exp = expected[i];
                 if (!act.Equals(exp))
                     throw new InvalidDataException(
-                        $"Actual item [{i}] not same as expected:\n  Actual: {act}\nExpected: {exp}"
+                        $"Actual item [{i}] not same as expected:\n  Actual: {act}\nExpected: {exp}\n(Make sure you sorted the results by the group's name as expected)"
                     );
             }
         }
+    }
 
+    [TestFixture]
+    public class Challenge3Tests
+    {
         [Test]
         public void QueryArchitectsRepos()
         {
@@ -154,7 +158,7 @@ namespace Exercise_5A
             };
 
             var meetups = Meetup.DB.Load();
-            var actual = Program.QueryArchitectsRepos(meetups);
+            var actual = Program.Challenge3_QueryArchitectsRepos(meetups);
 
             if (actual.Count != expected.Length)
             {
@@ -168,7 +172,7 @@ namespace Exercise_5A
                 var exp = expected[i];
                 if (!act.Equals(exp))
                     throw new InvalidDataException(
-                        $"Actual item [{i}] not same as expected:\n  Actual: {act}\nExpected: {exp}"
+                        $"Actual item [{i}] not same as expected:\n  Actual: {act}\nExpected: {exp}\n(Make sure you sorted the results by the speaker's name as expected)"
                     );
             }
         }

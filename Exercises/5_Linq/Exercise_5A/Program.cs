@@ -35,13 +35,13 @@ namespace Exercise_5A
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<MeetupStats> GetMeetupsStatistics(Meetup.DB meetups)
+        public static IEnumerable<MeetupStats> Challenge2_GetMeetupsStatistics(Meetup.DB meetups)
         {
             // TODO: REMEMBER to exclude meetup groups without any events
             throw new NotImplementedException();
         }
 
-        public static List<(string Name, string Title, string Url)> QueryArchitectsRepos(
+        public static List<(string Name, string Title, string Url)> Challenge3_QueryArchitectsRepos(
             Meetup.DB meetups
         )
         {
@@ -76,7 +76,7 @@ namespace Exercise_5A
             // -----------------
             // Challenge 2
             // -----------------
-            var meetupsStats = GetMeetupsStatistics(meetups);
+            var meetupsStats = Challenge2_GetMeetupsStatistics(meetups);
 
             Console.WriteLine("Challenge 2: Meetups Statistics");
             Console.WriteLine("-------------------------------");
@@ -98,7 +98,7 @@ namespace Exercise_5A
             // -----------------
             // Bonus Challenge 3
             // -----------------
-            var architectsRepos = QueryArchitectsRepos(meetups);
+            var architectsRepos = Challenge3_QueryArchitectsRepos(meetups);
             Console.WriteLine("Bonus Challenge 3: MVP Speakers");
             Console.WriteLine("--------------------------------");
             foreach (var item in architectsRepos)
