@@ -43,7 +43,9 @@ You can use existing LINQ functionalities and other elements you done and learnt
    Console.WriteLine(fencedNumbers);
    // "0|1|2|3|4|5|6|7|8|9"
    ```
-   ___
+
+   > &#x1F4A1; HINT: there is built-in functionality in .NET that converts a collection into a delimited string
+___
    **Difficulty:** Experienced  
    **Time:** 30 min 
 1. **HasAtLeast()** - Determines if a sequence has at least the number of specified items, in an optimized manner.
@@ -73,7 +75,7 @@ You can use existing LINQ functionalities and other elements you done and learnt
    string[][] collectionOfResults = await Task.WhenAll(tasks);
    string[] allResults = collectionOfResults.Flatten().ToArray();
    ```
-   > HINT: `foreach` inside `foreach` OR `SelectMany`  
+   > &#x1F4A1; HINT: `foreach` inside `foreach` OR `SelectMany`  
     ___
    **Difficulty:** Advanced  
    **Time:** 45 min  

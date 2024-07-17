@@ -44,15 +44,18 @@ ___
 **Difficulty:** Intermediate/Experienced  
 **Time:** 45 min  
 ___
-Query the names of the meetup groups, order them by name (case-insensitive) and return the following statistics for each:  
-- Meetup group name
-- Average number of attendees
-- Latest (Most recent) event's Title and Date
-- Has any event in that group ever had 200 or more attendees?
+
+- Take only meetup groups that have events
+- Sort the meetup groups by name (case-insensitive)
+- For each group return the following statistics:  
+  - Meetup group name
+  - Average number of attendees
+  - Latest (Most recent) event's Title and Date
+  - Has any event in that group ever had 200 or more attendees?
  
-For this implement GetMeetupsStatistics():
+For this implement Challenge2_GetMeetupsStatistics():
 ```csharp
-IEnumerable<MeetupStats> GetMeetupsStatistics(Meetup.DB meetups)
+IEnumerable<MeetupStats> Challenge2_GetMeetupsStatistics(Meetup.DB meetups)
 
 public struct MeetupStats
 {
@@ -63,7 +66,6 @@ public struct MeetupStats
     public bool EverHadAtLeast200Attendees;
 }
 ```
-##### &#x1F4A1; Make sure to exclude meetup groups without any events
 
 > &#x1F381; Bonus
 > If you sorted the events in order to find the most recent one (Latest Event),  
@@ -76,9 +78,9 @@ ___
 **Time:** 45 min  
 ___
 Query all the events' speakers which are Architects and have a GitHub repo.  
-For this implement QueryArchitectsRepos() that returns a list of: 
+For this implement Challenge3_QueryArchitectsRepos() that returns a list of: 
 Speaker name,title and the GitHub repo url
 ```csharp
-List<(string Name, string Title, string Url)> QueryArchitectsRepos(Meetup.DB meetups)
+List<(string Name, string Title, string Url)> Challenge3_QueryArchitectsRepos(Meetup.DB meetups)
 ```
-The list should be ordered by the Speaker's name and without duplicates
+The list should be **ordered** by the Speaker's name and without duplicates
