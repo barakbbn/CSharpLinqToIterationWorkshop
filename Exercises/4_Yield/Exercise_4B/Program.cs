@@ -66,12 +66,12 @@ namespace Exercise_4B
 
             // Need some more assistance?
             // 1. Try out an AI Chat (copilot.microsoft.com , gemini.google.com, deepai.org, chatgpt.com)
-            // 2. Scroll way way down to ReadCsvLines() method, see how it is implemented (it doesn't use `yield` keyword, but your code should)
-            // 3. See how ParseStudent() method is implemented
+            // 2. Scroll way way down to MyReadCsvLines() method, see how it is implemented (it doesn't use `yield` keyword, but your code should)
+            // 3. See how MyParseStudent() method is implemented
             // 4. Ask the instructor for guidance
 
 
-            // Still struggle, see GetStudentsEnumerator() method (it doesn't use `yield` keyword, but your code should)
+            // Still struggle, see MyGetStudentsEnumerator() method (it doesn't use `yield` keyword, but your code should)
         }
 
         //
@@ -139,7 +139,7 @@ namespace Exercise_4B
         //
         //
 
-        private IEnumerable<string> ReadCsvLines(StreamReader reader)
+        private IEnumerable<string> MyReadCsvLines(StreamReader reader)
         {
             reader.ReadLine(); // Skip header line
             var csvLines = new List<string>();
@@ -155,7 +155,7 @@ namespace Exercise_4B
             return csvLines;
         }
 
-        private StudentInfo ParseStudent(string csvLine)
+        private StudentInfo MyParseStudent(string csvLine)
         {
             var csvFields = csvLine.Split(','); // csvFields[0] -> Name , csvFields[1] -> Email , csvFields[2] -> City , csvFields[3] -> Country , csvFields[4] -> Grade
 
@@ -251,7 +251,7 @@ namespace Exercise_4B
         //
         //
 
-        private IEnumerator<StudentInfo> GetStudentsEnumerator()
+        private IEnumerator<StudentInfo> MyGetStudentsEnumerator()
         {
             string filename = "???"; // TODO: get filename passed to the constructor
 
@@ -266,7 +266,7 @@ namespace Exercise_4B
                     csvLine = reader.ReadLine();
                     if (!string.IsNullOrEmpty(csvLine))
                     {
-                        var student = ParseStudent(csvLine);
+                        var student = MyParseStudent(csvLine);
                         students.Add(student);
                     }
                 } while (csvLine != null);
