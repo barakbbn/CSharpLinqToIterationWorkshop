@@ -40,30 +40,37 @@ namespace Exercise_4B
 
         public StudentsFileEnumerator(string studentsCsvFilePath)
         {
+            if (string.IsNullOrWhiteSpace(studentsCsvFilePath))
+            {
+                throw new ArgumentException(
+                    "File path cannot be null or empty.",
+                    nameof(studentsCsvFilePath)
+                );
+            }
             _studentsCsvFilePath = studentsCsvFilePath;
+        }
+
+        // ===============================================
+        // !!!!! USE THIS METHOD TO OPEN THE STUDENTS FILE !!!!!!
+        // unit-tests depends on it to verify correct implementation
+        protected virtual StreamReader OpenStudentsFile(string filePath)
+        {
+            return File.OpenText(filePath);
         }
 
         public IEnumerator<StudentInfo> GetEnumerator()
         {
             using (var reader = OpenStudentsFile(_studentsCsvFilePath))
             {
-                foreach (var student in EnumerateStudents(reader))
+                var header = reader.ReadLine();
+                for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                 {
-                    yield return student;
+                    if (string.IsNullOrEmpty(line))
+                    {
+                        continue;
+                    }
+                    yield return ParseStudent(line);
                 }
-            }
-        }
-
-        private IEnumerable<StudentInfo> EnumerateStudents(StreamReader reader)
-        {
-            var header = reader.ReadLine();
-            for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
-            {
-                if (string.IsNullOrEmpty(line))
-                {
-                    continue;
-                }
-                yield return ParseStudent(line);
             }
         }
 
@@ -80,13 +87,5 @@ namespace Exercise_4B
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-        // ===============================================
-        // !!!!! USE THIS METHOD TO OPEN THE STUDENTS FILE !!!!!!
-        // unit-tests depends on it to verify correct implementation
-        protected virtual StreamReader OpenStudentsFile(string filePath)
-        {
-            return File.OpenText(filePath);
-        }
     }
 }
